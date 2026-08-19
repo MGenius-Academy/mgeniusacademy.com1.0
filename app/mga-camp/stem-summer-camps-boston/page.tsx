@@ -1,0 +1,145 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { CalendarIcon } from "lucide-react";
+import { PageHero } from "@/components/layout/page-hero";
+import { Container } from "@/components/container";
+import { CtaBanner } from "@/components/cta-banner";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: "STEM Summer Camps in Boston",
+  description:
+    "Explore MGA's 2026 lineup of week-long STEM summer camps in Newton, MA — AI robots, battle bots, drones, chemistry, and invention-based programs for K-8 students.",
+};
+
+const camps = [
+  {
+    title: "AI Humanoid Robot Camp",
+    ageGroup: "Grade 4+",
+    image: "/images/mga-camp_stem-summer-camps-boston/AI-robot.jpg",
+  },
+  {
+    title: "Battle Bot Arena Camp",
+    ageGroup: "Grade 2+",
+    image: "/images/mga-camp_stem-summer-camps-boston/battle-bot-1024x810.jpg",
+  },
+  {
+    title: "Build Your Own Claw Machine Camp",
+    ageGroup: "Grade 4+",
+    image: "/images/mga-camp_stem-summer-camps-boston/claw-1024x810.jpg",
+  },
+  {
+    title: "Chemistry Mini Lab Camp",
+    ageGroup: "Grade 4-7",
+    image: "/images/mga-camp_stem-summer-camps-boston/chemi-1024x810.jpg",
+  },
+  {
+    title: "Electric Car & Rider Camp",
+    ageGroup: "Grade 4+",
+    image: "/images/mga-camp_stem-summer-camps-boston/electric-car-1024x810.jpg",
+  },
+  {
+    title: "Magic Kitchen Science Camp",
+    ageGroup: "K-Grade 5",
+    image: "/images/mga-camp_stem-summer-camps-boston/kitchen-1024x810.jpg",
+  },
+  {
+    title: "Mystery of the Body & Brain Camp",
+    ageGroup: "K-Grade 5",
+    image: "/images/mga-camp_stem-summer-camps-boston/body-1024x810.jpg",
+  },
+  {
+    title: "Omni Drone Academy Camp",
+    ageGroup: "Grade 2+",
+    image: "/images/mga-camp_stem-summer-camps-boston/Drone-1024x810.jpg",
+  },
+  {
+    title: "Scratch Coding & 3D Design Camp",
+    ageGroup: "K-Grade 5",
+    image: "/images/mga-camp_stem-summer-camps-boston/3D-coding-1024x810.jpg",
+  },
+  {
+    title: "Shadow Studio: Shadow Puppetry",
+    ageGroup: "Grade 1-5",
+    image: "/images/mga-camp_stem-summer-camps-boston/shadow-studio-1024x810.jpg",
+  },
+  {
+    title: "Smart Home Designers Lab Camp",
+    ageGroup: "Grade 2+",
+    image: "/images/mga-camp_stem-summer-camps-boston/smart-home-1024x810.jpg",
+  },
+  {
+    title: "Engineering Invention Camp",
+    ageGroup: "K-Grade 5",
+    image: "/images/mga-camp_stem-summer-camps-boston/little-inventor-1024x810.jpg",
+  },
+];
+
+export default function StemSummerCampsBostonPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Week Camps"
+        title="STEM Summer Camps in Boston"
+        description="MGA's 2026 camp lineup for K-8 students in Newton, MA and the Greater Boston area — hands-on AI, robotics, engineering, coding, chemistry, and invention-based projects. Students build real projects while developing creativity, problem-solving skills, and confidence."
+      />
+
+      <section className="py-16">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              2026 Spring &amp; Summer Camp Lineup
+            </h2>
+            <p className="mt-3 text-muted-foreground text-pretty">
+              Twelve themed week-long programs, each led by an MGA instructor in small
+              groups. Reach out to find the best fit for your child’s grade and
+              interests.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {camps.map((camp) => (
+              <Card key={camp.title} className="h-full gap-3 overflow-hidden py-0">
+                <div className="relative aspect-4/3 overflow-hidden">
+                  <Image
+                    src={camp.image}
+                    alt={camp.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col gap-2 px-5 pb-5">
+                  <h3 className="font-semibold">{camp.title}</h3>
+                  <Badge variant="secondary" className="w-fit">
+                    <CalendarIcon className="size-3" aria-hidden />
+                    {camp.ageGroup}
+                  </Badge>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Button
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90"
+              render={
+                <a href={siteConfig.trialFormUrl} target="_blank" rel="noopener noreferrer" />
+              }
+            >
+              Ask About 2026 Camp Dates
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      <CtaBanner
+        title="Reserve Your Child's Camp Spot"
+        description="Spots fill quickly by grade and week — get in touch to check availability."
+      />
+    </>
+  );
+}
