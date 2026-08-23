@@ -9,17 +9,43 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { siteConfig } from "@/lib/site-config";
 
 const heroImages = [
-  { src: "/images/home/banner-12.jpg", alt: "MGA students building a project together" },
-  { src: "/images/home/banner-11.jpg", alt: "MGA Noetic Learning Contest awards in Boston" },
-  { src: "/images/home/banner-8-1.jpg", alt: "MGA students working on a STEM activity" },
-  { src: "/images/home/banner0-1-scaled.jpeg", alt: "MGA students in a hands-on class" },
-  { src: "/images/home/banner-7-1.jpg", alt: "MGA students presenting their work" },
-  { src: "/images/home/banner-2-2.jpg", alt: "MGA students in the Boston classroom" },
+  {
+    src: "/images/home/banner-12.jpg",
+    alt: "MGA students building a project together",
+    href: "/student-project",
+  },
+  {
+    src: "/images/home/banner-11.jpg",
+    alt: "MGA Noetic Learning Contest awards in Boston",
+    href: "/boston-stem/math-awards",
+  },
+  {
+    src: "/images/home/banner-8-1.jpg",
+    alt: "MGA students working on a STEM activity",
+    href: "/eventnews",
+  },
+  {
+    src: "/images/home/banner0-1-scaled.jpeg",
+    alt: "MGA students in a hands-on class",
+    href: "/curriculum",
+  },
+  {
+    src: "/images/home/banner-7-1.jpg",
+    alt: "MGA students presenting their work",
+    href: "/icw-awards",
+  },
+  {
+    src: "/images/home/banner-2-2.jpg",
+    alt: "MGA students in the Boston classroom",
+    href: "/about",
+  },
 ];
 
 export function HomeHero() {
@@ -68,24 +94,78 @@ export function HomeHero() {
 
 function HeroCarousel() {
   const [api, setApi] = useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     if (!api) return;
-    const id = setInterval(() => api.scrollNext(), 4500);
-    return () => clearInterval(id);
+    const onSelect = () => setSelectedIndex(api.selectedScrollSnap());
+    onSelect();
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
   }, [api]);
 
+  useEffect(() => {
+    if (!api || isPaused) return;
+    const id = setInterval(() => api.scrollNext(), 4500);
+    return () => clearInterval(id);
+  }, [api, isPaused]);
+
   return (
-    <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
-      <CarouselContent>
-        {heroImages.map((image) => (
-          <CarouselItem key={image.src}>
-            <div className="relative aspect-4/3 overflow-hidden rounded-3xl shadow-lg">
-              <Image src={image.src} alt={image.alt} fill className="object-cover" priority />
-            </div>
-          </CarouselItem>
+    <div
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+    >
+      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
+        <CarouselContent>
+          {heroImages.map((image, index) => (
+            <CarouselItem key={image.src}>
+              <div className="relative aspect-4/3 overflow-hidden rounded-3xl shadow-lg">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+                {image.href ? (
+                  <Button
+                    className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/60 text-white backdrop-blur-sm hover:bg-black/75"
+                    render={<Link href={image.href} />}
+                  >
+                    Click to Explore
+                  </Button>
+                ) : null}
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious size="icon" className="left-3" />
+        <CarouselNext size="icon" className="right-3" />
+      </Carousel>
+
+      <div className="mt-2 flex items-center justify-center">
+        {heroImages.map((image, index) => (
+          <button
+            key={image.src}
+            type="button"
+            aria-label={`Go to slide ${index + 1}`}
+            aria-current={index === selectedIndex}
+            onClick={() => api?.scrollTo(index)}
+            className="flex size-9 items-center justify-center"
+          >
+            <span
+              className={`block h-2.5 rounded-full transition-all ${
+                index === selectedIndex ? "w-6 bg-primary" : "w-2.5 bg-primary/30"
+              }`}
+            />
+          </button>
         ))}
-      </CarouselContent>
-    </Carousel>
+      </div>
+    </div>
   );
 }

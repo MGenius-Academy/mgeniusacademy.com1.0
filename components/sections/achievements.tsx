@@ -6,7 +6,17 @@ import { Button } from "@/components/ui/button";
 const groups = [
   {
     title: "2026 Math Kangaroo & Noetic Math Awards",
-    image: "/images/home/Noetic-rngry7x643g2yvox591iqbq0tdx5zdj1zgevoo4cg0.jpg",
+    backgroundImage: "/images/home/achievement-bg-math-kangaroo.jpg",
+    logos: [
+      {
+        src: "/images/home/math-kangaroo-rngrqc1ws4nhkn596uc6tbctf0sbes848fe8r3t8n4.jpg",
+        alt: "Math Kangaroo USA",
+      },
+      {
+        src: "/images/home/Noetic-rngry7x643g2yvox591iqbq0tdx5zdj1zgevoo4cg0.jpg",
+        alt: "Noetic Learning Math Contest",
+      },
+    ],
     href: "/boston-stem/math-awards",
     linkLabel: "View Math Awards",
     stats: [
@@ -20,7 +30,13 @@ const groups = [
   },
   {
     title: "2026 Invention Convention Worldwide Awards",
-    image: "/images/home/ICW-rnnlxo96vbw8aengikiev6ktn4im402ehvrjxs1udc.jpg",
+    backgroundImage: "/images/home/achievement-bg-icw.jpg",
+    logos: [
+      {
+        src: "/images/home/ICW-rnnlxo96vbw8aengikiev6ktn4im402ehvrjxs1udc.jpg",
+        alt: "Invention Convention Worldwide",
+      },
+    ],
     href: "/icw-awards",
     linkLabel: "View Innovation Awards",
     stats: [
@@ -51,23 +67,43 @@ export function Achievements() {
           {groups.map((group) => (
             <div
               key={group.title}
-              className="flex flex-col gap-5 rounded-3xl border border-border bg-background p-6 sm:p-8"
+              className="relative isolate flex flex-col gap-6 overflow-hidden rounded-3xl p-8 sm:p-10"
             >
-              <div className="flex items-center gap-4">
-                <div className="relative size-16 shrink-0 overflow-hidden rounded-xl">
-                  <Image src={group.image} alt="" fill className="object-cover" />
-                </div>
-                <h3 className="text-lg font-semibold text-balance">{group.title}</h3>
-              </div>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-                {group.stats.map((stat) => (
-                  <div key={stat.label}>
-                    <p className="text-2xl font-bold text-primary">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+              <Image
+                src={group.backgroundImage}
+                alt=""
+                fill
+                className="-z-20 object-cover"
+              />
+              <div className="absolute inset-0 -z-10 bg-black/75" />
+
+              <div className="flex items-center gap-2 sm:gap-4">
+                {group.logos.map((logo) => (
+                  <div
+                    key={logo.src}
+                    className="relative h-12 min-w-0 flex-1 overflow-hidden rounded-xl bg-white p-2 sm:h-20 sm:flex-none sm:w-56 sm:p-3"
+                  >
+                    <Image src={logo.src} alt={logo.alt} fill className="object-contain" />
                   </div>
                 ))}
               </div>
-              <Button variant="outline" className="mt-auto w-fit" render={<Link href={group.href} />}>
+              <h3 className="text-xl font-semibold text-balance text-white sm:text-2xl">
+                {group.title}
+              </h3>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-7">
+                {group.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <p className="text-4xl font-bold text-white sm:text-5xl">{stat.value}</p>
+                    <p className="mt-1 text-sm text-white/80 sm:text-base">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="mt-auto w-fit"
+                render={<Link href={group.href} />}
+              >
                 {group.linkLabel}
               </Button>
             </div>

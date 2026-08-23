@@ -1,5 +1,16 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/container";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const publicSchools = [
   "8.png",
@@ -40,22 +51,47 @@ const privateSchools = [
   "2-1.png",
 ];
 
-function LogoRow({ files }: { files: string[] }) {
+function LogoCarousel({ files, label }: { files: string[]; label: string }) {
+  const [api, setApi] = useState<CarouselApi>();
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (!api || isPaused) return;
+    const id = setInterval(() => api.scrollNext(), 2500);
+    return () => clearInterval(id);
+  }, [api, isPaused]);
+
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4">
-      {files.map((file) => (
-        <div
-          key={file}
-          className="relative flex size-16 items-center justify-center rounded-xl border border-border bg-background p-2 sm:size-20"
-        >
-          <Image
-            src={`/images/home/${file}`}
-            alt=""
-            fill
-            className="object-contain p-2"
-          />
-        </div>
-      ))}
+    <div>
+      <p className="mb-4 text-center text-sm font-semibold text-muted-foreground">{label}</p>
+      <div
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={() => setIsPaused(false)}
+      >
+        <Carousel opts={{ loop: true, align: "start" }} setApi={setApi} className="px-11">
+          <CarouselContent className="-ml-[5px]">
+            {files.map((file) => (
+              <CarouselItem
+                key={file}
+                className="basis-1/2 pl-[5px] sm:basis-1/3 lg:basis-1/6"
+              >
+                <div className="relative mx-auto flex size-32 items-center justify-center rounded-xl border border-border bg-background p-2 sm:size-40">
+                  <Image
+                    src={`/images/home/${file}`}
+                    alt=""
+                    fill
+                    className="object-contain p-2"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious size="icon" className="left-0" aria-label={`Previous ${label} logos`} />
+          <CarouselNext size="icon" className="right-0" aria-label={`Next ${label} logos`} />
+        </Carousel>
+      </div>
     </div>
   );
 }
@@ -69,19 +105,9 @@ export function AlumniSchools() {
             Where MGA Alumni Are Studying
           </h2>
         </div>
-        <div className="mt-10 flex flex-col gap-8">
-          <div>
-            <p className="mb-4 text-center text-sm font-semibold text-muted-foreground">
-              Public School
-            </p>
-            <LogoRow files={publicSchools} />
-          </div>
-          <div>
-            <p className="mb-4 text-center text-sm font-semibold text-muted-foreground">
-              Private School
-            </p>
-            <LogoRow files={privateSchools} />
-          </div>
+        <div className="mt-10 flex flex-col gap-10">
+          <LogoCarousel files={publicSchools} label="Public School" />
+          <LogoCarousel files={privateSchools} label="Private School" />
         </div>
       </Container>
     </section>

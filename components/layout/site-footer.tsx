@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 import { InstagramIcon } from "@/components/icons/instagram-icon";
 import { Container } from "@/components/container";
+import { SiteLogo } from "@/components/site-logo";
 import { footerLinks, mainNav } from "@/lib/nav";
 import { siteConfig } from "@/lib/site-config";
 
@@ -13,13 +13,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-secondary/40">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-3">
-          <Image
-            src="/mga-logo.png"
-            alt={`${siteConfig.name} logo`}
-            width={429}
-            height={194}
-            className="h-10 w-auto"
-          />
+          <SiteLogo />
           <p className="text-sm text-muted-foreground">{siteConfig.tagline}</p>
           <p className="text-sm text-muted-foreground">{siteConfig.description}</p>
         </div>
