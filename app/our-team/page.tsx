@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const metadata: Metadata = {
   title: "Our Team",
@@ -64,20 +64,34 @@ export default function OurTeamPage() {
 
       <section className="py-16">
         <Container>
-          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((member) => (
-              <div key={member.name} className="flex flex-col items-center text-center">
-                <Avatar size="lg" className="size-32 sm:size-36">
-                  <AvatarImage src={member.image} alt={member.name} className="object-cover" />
-                  <AvatarFallback>
-                    {member.name
-                      .split(" ")
-                      .map((part) => part[0])
-                      .join("")}
-                  </AvatarFallback>
-                </Avatar>
-                <h3 className="mt-4 text-lg font-semibold">{member.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{member.title}</p>
+          <div className="flex flex-col gap-y-12">
+            {Array.from({ length: Math.ceil(team.length / 3) }, (_, rowIndex) =>
+              team.slice(rowIndex * 3, rowIndex * 3 + 3),
+            ).map((row, rowIndex) => (
+              <div
+                key={rowIndex}
+                className="flex flex-col divide-y divide-border sm:flex-row sm:justify-center sm:divide-x sm:divide-y-0"
+              >
+                {row.map((member) => (
+                  <div
+                    key={member.name}
+                    className="flex flex-col items-center px-8 py-8 text-center first:pt-0 last:pb-0 sm:w-1/3 sm:py-0"
+                  >
+                    <div className="relative size-40 shrink-0 overflow-hidden rounded-full sm:size-44">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                        sizes="176px"
+                      />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold text-balance">{member.name}</h3>
+                    <p className="mt-1 text-sm font-semibold text-accent text-balance">
+                      {member.title}
+                    </p>
+                  </div>
+                ))}
               </div>
             ))}
           </div>
