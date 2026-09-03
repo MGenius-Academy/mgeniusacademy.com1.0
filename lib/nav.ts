@@ -17,24 +17,24 @@ export const mainNav: NavItem[] = [
     href: "/curriculum",
     children: [
       {
-        label: "Engineering",
-        href: "/curriculum/engineering-2",
-        description: "Hands-on robotics & engineering tracks",
-      },
-      {
-        label: "Singapore Math",
-        href: "/curriculum/singapore-math",
-        description: "Mastery-based competitive math",
-      },
-      {
-        label: "AI Programs",
+        label: "Young CEO & CTO",
         href: "/ai-programs-boston",
-        description: "AI + hard-tech for young makers",
+        description: "AI-Powered Tech Entrepreneurship Program",
       },
       {
-        label: "Enrollment Guidance",
-        href: "/curriculum/enrollment-guidance",
-        description: "How to choose the right track",
+        label: "Engineering Course",
+        href: "/curriculum/engineering-2",
+        description: "Level EP1-5",
+      },
+      {
+        label: "Math Course",
+        href: "/curriculum/singapore-math",
+        description: "Advancement & Competition Math",
+      },
+      {
+        label: "Advanced Tech Competitions & Applied Innovation",
+        href: "/curriculum/advanced-tech-competitions",
+        description: "ICW, NeuroMaker Creative Challenge & more",
       },
     ],
   },

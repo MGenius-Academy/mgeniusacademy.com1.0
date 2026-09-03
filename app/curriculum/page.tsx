@@ -10,7 +10,7 @@ import { Card } from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "Curriculum",
   description:
-    "Explore MGA's K-8 STEM curriculum in Newton/Boston: hands-on engineering, Singapore Math, AI & innovation programs, and enrollment guidance.",
+    "Explore MGA's K-8 STEM curriculum in Newton/Boston: hands-on engineering, Singapore Math, AI & innovation programs, and advanced tech competitions.",
 };
 
 const tracks = [
@@ -36,10 +36,11 @@ const tracks = [
       "Elite tracks in AI, invention, and entrepreneurship for advanced students — from AI chatbots to global invention competitions.",
   },
   {
-    title: "Enrollment Guidance",
-    href: "/curriculum/enrollment-guidance",
+    title: "Advanced Tech Competitions & Applied Innovation",
+    href: "/curriculum/advanced-tech-competitions",
+    image: "/images/home/Bostoncourse4.png",
     description:
-      "Not sure where to start? See our term calendars, class schedules, and sign up for a free trial lesson.",
+      "End-to-end project mentoring for prestigious competitions such as Invention Convention Worldwide (ICW) and the NeuroMaker Creative Challenge.",
   },
 ];
 

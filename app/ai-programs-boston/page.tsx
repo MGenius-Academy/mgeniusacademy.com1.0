@@ -14,13 +14,6 @@ export const metadata: Metadata = {
 
 const programs = [
   {
-    name: "ICW: Global Inventor Annual Program",
-    requirement: "EP3 completed or G7+ (Selected, Required)",
-    image: "/images/ai-programs-boston/ICW.jpg",
-    description:
-      "An elite invention journey for young innovators. From real-world problem discovery to global competition presentation, this program develops ideas into inventions with true impact.",
-  },
-  {
     name: "AI Chatbot: The Chief AI Entrepreneur Program",
     requirement: "EP5 completed or G6+ (Selected, Required)",
     image: "/images/ai-programs-boston/AI-Chatbot.jpg",
