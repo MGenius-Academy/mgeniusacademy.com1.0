@@ -15,6 +15,15 @@ import {
 } from "@/components/ui/carousel";
 import { siteConfig } from "@/lib/site-config";
 
+const corePrograms = [
+  "Young CEO & CTO: AI-Powered Tech Entrepreneurship Program",
+  "Engineering Course",
+  "Math Advancement & Competition Course",
+  "Hands-on Camps & Workshops",
+  "Advanced Tech Competitions & Applied Innovation",
+  "Competition Hosting",
+];
+
 const heroImages = [
   {
     src: "/images/home/banner-12.jpg",
@@ -57,18 +66,50 @@ export function HomeHero() {
             STEM · Math · AI · Engineering — Boston
           </p>
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-balance sm:text-5xl">
-            Hands-on learning for K&ndash;G8 students in Boston
+            Hands-on learning for K&ndash;G12 students in Boston
           </h1>
-          <p className="mt-5 text-lg text-muted-foreground text-pretty">
-            MGenius Academy (MGA) is a leading STEM academy in the Boston area
-            offering math, AI, and engineering programs for K&ndash;G8 students.
-            Our programs focus on hands-on learning, problem-solving, and
-            real-world applications through robotics, coding, mathematics, and
-            engineering in small-group, project-based classes.
+
+          <p className="mt-5 text-base font-semibold text-foreground">
+            MGA (MGenius Academy)
           </p>
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-1 text-lg text-muted-foreground text-pretty">
+            MGA is a leading STEM and Innovation academy in the Boston area.
+            Empowering K&ndash;G12 students with hands-on STEM education,
+            cutting-edge technology, and small-group project-based learning to
+            build the next generation of innovators.
+          </p>
+
+          <div className="mt-6">
+            <p className="text-sm font-semibold uppercase tracking-wide text-foreground">
+              Core Programs &amp; Tracks
+            </p>
+            <ul className="mt-3 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+              {corePrograms.map((program) => (
+                <li key={program} className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <svg
+                    className="mt-0.5 size-4 shrink-0 text-accent"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M16.667 5L7.5 14.167 3.333 10"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span>{program}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="mt-6 text-sm text-muted-foreground">
             Serving families in the Greater Boston area, including Newton,
-            Waltham, Lexington, and surrounding communities.
+            Wellesley, Needham, Belmont, Waltham, Lexington, and surrounding
+            communities.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button

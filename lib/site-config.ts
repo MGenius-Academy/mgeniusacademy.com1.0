@@ -15,5 +15,5 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/mgeniusacademy/",
   },
   trialFormUrl:
-    "https://docs.google.com/forms/d/e/1FAIpQLSddAXHzfid22CXq14Ahb--6sBmRQ-fz2m5730TAQHwmTwV_tQ/viewform",
+    "https://app.tryplayground.com/form/5KIochWriASAmshGsTag/fmWrZMJgpIYeCIW51Rrv",
 };

@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 

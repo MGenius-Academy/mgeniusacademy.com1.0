@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 const team = [
   {
-    name: "Zhili W",
-    title: "Chief Executive Officer",
-    image: "/images/our-team/zhili-1-1024x1024.jpg",
+    name: "Megan S",
+    title: "Director of Academic Programs",
+    image: "/images/our-team/Megan-1024x1024.webp",
   },
   {
     name: "Yuesen W",
@@ -22,14 +22,9 @@ const team = [
     image: "/images/our-team/yuesen-1024x1024.webp",
   },
   {
-    name: "Megan S",
-    title: "Director of Academic Programs",
-    image: "/images/our-team/Megan-1024x1024.webp",
-  },
-  {
-    name: "Ying W",
-    title: "Director of Math Programs",
-    image: "/images/our-team/wangying-1024x1024.webp",
+    name: "Zhili W",
+    title: "Chief Executive Officer",
+    image: "/images/our-team/zhili-1-1024x1024.jpg",
   },
   {
     name: "Tianze L",
@@ -40,6 +35,16 @@ const team = [
     name: "Grace H",
     title: "Instructional Specialist",
     image: "/images/our-team/grace-1-1024x1024.jpg",
+  },
+  {
+    name: "Ying W",
+    title: "Director of Math Programs",
+    image: "/images/our-team/wangying-1024x1024.webp",
+  },
+  {
+    name: "Sharon C",
+    title: "Growth & Innovation Specialist",
+    image: "/images/our-team/Sharon-1.png",
   },
   {
     name: "Trevor L",
