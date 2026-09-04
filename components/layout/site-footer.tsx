@@ -1,10 +1,24 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
-import { InstagramIcon } from "@/components/icons/instagram-icon";
 import { Container } from "@/components/container";
 import { SiteLogo } from "@/components/site-logo";
 import { footerLinks, mainNav } from "@/lib/nav";
 import { siteConfig } from "@/lib/site-config";
+
+const socialQrs = [
+  { label: "WeChat", qr: "/images/contact/contact_wx.jpg" },
+  {
+    label: "Instagram",
+    qr: "/images/contact/contact_ins.png",
+    href: siteConfig.social.instagram,
+  },
+  {
+    label: "小红书",
+    qr: "/images/contact/contact_rednote.png",
+    href: siteConfig.social.rednote,
+  },
+];
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -63,16 +77,41 @@ export function SiteFooter() {
 
         <div>
           <h3 className="text-sm font-semibold text-foreground">Follow</h3>
-          <div className="mt-3 flex gap-3">
-            <a
-              href={siteConfig.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="MGA on Instagram"
-              className="flex size-9 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20"
-            >
-              <InstagramIcon className="size-4" aria-hidden />
-            </a>
+          <div className="mt-3 grid grid-cols-3 gap-3 sm:flex sm:gap-4">
+            {socialQrs.map((social) => {
+              const content = (
+                <>
+                  <span className="flex size-16 items-center justify-center rounded-lg bg-white p-1 ring-1 ring-border sm:size-20">
+                    <Image
+                      src={social.qr}
+                      alt={`${social.label} QR code`}
+                      width={160}
+                      height={160}
+                      className="size-full object-contain"
+                    />
+                  </span>
+                  <span className="text-xs text-muted-foreground">{social.label}</span>
+                </>
+              );
+              return social.href ? (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-1.5 text-center"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div
+                  key={social.label}
+                  className="flex flex-col items-center gap-1.5 text-center"
+                >
+                  {content}
+                </div>
+              );
+            })}
           </div>
         </div>
       </Container>

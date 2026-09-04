@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { CalendarIcon, MapPinIcon } from "lucide-react";
-import { PageHero } from "@/components/layout/page-hero";
+import Link from "next/link";
+import { ArrowRightIcon, CalendarIcon, MapPinIcon } from "lucide-react";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Event & Workshop",
@@ -16,68 +14,81 @@ export const metadata: Metadata = {
 
 const events = [
   {
-    title: "Noetic Learning Math Contest Award Celebration",
-    date: "May 9, 2026, 2:30 PM – 3:00 PM",
-    image: "/images/workshop-event/Noetic0509-1-731x1024.jpg",
-    ended: true,
+    title: "Newtonville Village Day",
+    date: "September 20, 2026",
+    image: "/images/workshop-event/workshop09022026.png",
+    learnMoreUrl: "https://www.newtonvilleareacouncil.com/village-day",
   },
   {
-    title: "Mother's Day Special Open House",
-    date: "May 9, 2026, 1:30 PM – 4:30 PM",
-    image: "/images/workshop-event/WechatIMG13908-745x1024.jpg",
-    ended: true,
-  },
-  {
-    title: "Shadow Puppetry & Light Science Mini Workshop",
-    date: "April 11, 2026, 1:30 PM – 3:00 PM",
-    image: "/images/workshop-event/0411-Workshop-0323-791x1024.jpg",
-    ended: true,
-  },
-  {
-    title: "Easter Fun: MGA Special Event for Pre-K",
-    date: "April 4, 2026, 1:30 PM – 4:15 PM",
-    image: "/images/workshop-event/0404Easter-791x1024.jpg",
-    ended: true,
+    title: "Cambridge Science Carnival",
+    date: "October 4, 2026",
+    image: "/images/workshop-event/workshop20261004.png",
+    learnMoreUrl: "https://cambridgesciencecarnival.org/",
+    address: "292 Main St, Cambridge, MA 02142",
   },
 ];
 
 export default function WorkshopEventPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Events"
-        title="Event &amp; Workshop"
-        description="Join us for hands-on workshops, seasonal open houses, and community celebrations — an exciting journey of innovation, engineering, and creativity for the whole family."
-      />
+      <section className="relative overflow-hidden border-b border-border py-14 sm:py-20">
+        <Image
+          src="/images/workshop-event/workshophero01.png"
+          alt="MGA students building hands-on projects together"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <Container className="relative max-w-3xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-wide text-white/85">
+            Events
+          </p>
+          <h1 className="mt-2 text-4xl font-bold tracking-tight text-balance text-white sm:text-5xl">
+            Event &amp; Workshop
+          </h1>
+          <p className="mt-4 text-lg text-white/85 text-pretty">
+            Join us for hands-on workshops, seasonal open houses, and
+            community celebrations — an exciting journey of innovation,
+            engineering, and creativity for the whole family.
+          </p>
+        </Container>
+      </section>
 
       <section className="py-16">
         <Container>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2">
             {events.map((event) => (
               <Card key={event.title} className="h-full gap-3 overflow-hidden py-0">
-                <div className="relative aspect-3/4 overflow-hidden">
+                <div className="relative aspect-4/3 overflow-hidden bg-muted">
                   <Image
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover"
+                    className="object-contain p-3"
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 px-5 pb-5">
-                  {event.ended ? (
-                    <Badge variant="outline" className="w-fit">
-                      Past Event
-                    </Badge>
-                  ) : null}
                   <h3 className="font-semibold leading-snug">{event.title}</h3>
                   <p className="flex items-start gap-1.5 text-sm text-muted-foreground">
                     <CalendarIcon className="mt-0.5 size-3.5 shrink-0" aria-hidden />
                     {event.date}
                   </p>
-                  <p className="flex items-start gap-1.5 text-sm text-muted-foreground">
-                    <MapPinIcon className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-                    {siteConfig.address.line1}, {siteConfig.address.line2}
-                  </p>
+                  {event.address ? (
+                    <p className="flex items-start gap-1.5 text-sm text-muted-foreground">
+                      <MapPinIcon className="mt-0.5 size-3.5 shrink-0" aria-hidden />
+                      {event.address}
+                    </p>
+                  ) : null}
+                  <Link
+                    href={event.learnMoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium text-primary"
+                  >
+                    Learn more
+                    <ArrowRightIcon className="size-3.5" />
+                  </Link>
                 </div>
               </Card>
             ))}

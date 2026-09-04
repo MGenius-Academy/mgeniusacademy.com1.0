@@ -48,7 +48,7 @@ const heroImages = [
   {
     src: "/images/home/banner-7-1.jpg",
     alt: "MGA students presenting their work",
-    href: "/icw-awards",
+    href: "/curriculum/engineering-2",
   },
   {
     src: "/images/home/banner-2-2.jpg",

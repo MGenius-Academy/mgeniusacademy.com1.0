@@ -65,7 +65,7 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    label: "Innovation & Competition",
+    label: "Awards",
     children: [
       {
         label: "Math Awards",
@@ -94,13 +94,7 @@ export const mainNav: NavItem[] = [
       },
     ],
   },
-  {
-    label: "Events",
-    href: "/events",
-    children: [
-      { label: "News", href: "/eventnews", description: "Latest from MGA" },
-    ],
-  },
+  { label: "News", href: "/eventnews" },
   {
     label: "More",
     children: [

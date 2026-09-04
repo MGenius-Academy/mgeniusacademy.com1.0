@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MailIcon, MapPinIcon, MessageCircleIcon, PhoneIcon } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
@@ -37,9 +38,26 @@ const cards = [
 ];
 
 const socials = [
-  { icon: MessageCircleIcon, label: "WeChat", value: "MGeniusAcademy" },
-  { icon: InstagramIcon, label: "Instagram", value: "@MGENIUSACADEMY", href: siteConfig.social.instagram },
-  { icon: MessageCircleIcon, label: "小红书 (RedNote)", value: "MGeniusAcade" },
+  {
+    icon: MessageCircleIcon,
+    label: "WeChat",
+    value: "MGeniusAcademy",
+    qr: "/images/contact/contact_wx.jpg",
+  },
+  {
+    icon: InstagramIcon,
+    label: "Instagram",
+    value: "@MGENIUSACADEMY",
+    href: siteConfig.social.instagram,
+    qr: "/images/contact/contact_ins.png",
+  },
+  {
+    icon: MessageCircleIcon,
+    label: "小红书 (RedNote)",
+    value: "MGeniusAcade",
+    href: siteConfig.social.rednote,
+    qr: "/images/contact/contact_rednote.png",
+  },
 ];
 
 export default function ContactPage() {
@@ -92,11 +110,18 @@ export default function ContactPage() {
             {socials.map((social) => {
               const content = (
                 <>
-                  <span className="flex size-11 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <social.icon className="size-5" aria-hidden />
+                  <span className="flex size-32 items-center justify-center rounded-xl bg-white p-2 ring-1 ring-border">
+                    <Image
+                      src={social.qr}
+                      alt={`${social.label} QR code`}
+                      width={200}
+                      height={200}
+                      className="size-full object-contain"
+                    />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-foreground">
+                    <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-foreground">
+                      <social.icon className="size-4 text-primary" aria-hidden />
                       {social.label}
                     </p>
                     <p className="text-sm text-muted-foreground">{social.value}</p>

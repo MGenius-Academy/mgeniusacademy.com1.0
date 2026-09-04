@@ -199,10 +199,10 @@ export default function IcwAwardsPage() {
             competition-ready innovation projects.
           </p>
           <Link
-            href="/ai-programs-boston"
+            href="/curriculum/advanced-tech-competitions/icw-innovation-program-boston"
             className="flex items-center gap-1 font-medium text-primary hover:underline"
           >
-            Explore MGA Innovation Programs
+            Explore MGA&apos;s ICW Program
             <ArrowRightIcon className="size-4" />
           </Link>
         </Container>

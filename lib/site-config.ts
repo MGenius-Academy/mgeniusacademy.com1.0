@@ -13,6 +13,7 @@ export const siteConfig = {
   email: "info@mgeniusacademy.com",
   social: {
     instagram: "https://www.instagram.com/mgeniusacademy/",
+    rednote: "https://xhslink.cn/o/4QM0JYJAc4b",
   },
   trialFormUrl:
     "https://app.tryplayground.com/form/5KIochWriASAmshGsTag/fmWrZMJgpIYeCIW51Rrv",

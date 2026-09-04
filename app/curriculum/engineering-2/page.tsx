@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { UsersIcon, WrenchIcon, RocketIcon } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { engineeringLevels } from "@/lib/engineering-levels";
 
 export const metadata: Metadata = {
   title: "Engineering Classes for Kids",
@@ -31,45 +34,6 @@ const whyMga = [
     title: "A Progressive Pathway to Real Engineering Thinking",
     description:
       "Through a spiral learning approach, students build knowledge step by step over time, strengthening problem-solving skills and developing authentic engineering thinking at each level.",
-  },
-];
-
-const levels = [
-  {
-    level: "EP Level 1",
-    ageGroup: "K–G1",
-    image: "/images/curriculum_engineering-2/EP1-1.jpg",
-    description:
-      "Introduces young learners in Kindergarten to Grade 1 to foundational engineering concepts through hands-on STEM projects, simple circuits, and beginner maker tools.",
-  },
-  {
-    level: "EP Level 2",
-    ageGroup: "G2–G3",
-    image: "/images/curriculum_engineering-2/EP2.jpg",
-    description:
-      "Helps students in Grades 2–3 deepen their engineering and science understanding through more complex projects that build observation, hands-on ability, and problem-solving skills.",
-  },
-  {
-    level: "EP Level 3",
-    ageGroup: "G3–G4",
-    image: "/images/curriculum_engineering-2/3-0.png",
-    description:
-      "Designed for students ready to take their hands-on engineering learning to the next level. Through increasingly challenging project-based STEM activities, students strengthen their understanding of engineering concepts while developing creativity, design thinking, and problem-solving skills.",
-  },
-  {
-    level: "EP Level 4",
-    ageGroup: "G4–G5",
-    image: "/images/curriculum_engineering-2/EP4.jpg",
-    description:
-      "Designed for students ready for more advanced engineering projects and deeper technical exploration. Through hands-on, project-based learning, students apply engineering principles to increasingly sophisticated builds while strengthening logical thinking, creativity, and analytical skills.",
-  },
-  {
-    level: "EP Level 5",
-    ageGroup: "G6–G7",
-    image:
-      "/images/curriculum_engineering-2/Gemini_Generated_Image_9xjel49xjel49xje-1024x768.png",
-    description:
-      "The most advanced stage of MGA's engineering program, designed for students ready to develop stronger independent thinking and advanced project skills. Through challenging hands-on engineering projects, students deepen their understanding of design, structure, systems, and innovation.",
   },
 ];
 
@@ -124,8 +88,8 @@ export default function EngineeringPage() {
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {levels.map((level) => (
-              <Card key={level.level} className="h-full gap-3 overflow-hidden py-0">
+            {engineeringLevels.map((level) => (
+              <Card key={level.slug} className="h-full gap-3 overflow-hidden py-0">
                 <div className="relative aspect-4/3 overflow-hidden">
                   <Image
                     src={level.image}
@@ -140,8 +104,17 @@ export default function EngineeringPage() {
                     <Badge variant="secondary">{level.ageGroup}</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    {level.description}
+                    {level.tagline}
                   </p>
+                  <Button
+                    size="sm"
+                    className="mt-auto w-fit bg-accent text-accent-foreground hover:bg-accent/90"
+                    render={
+                      <Link href={`/curriculum/engineering-2/${level.slug}`} />
+                    }
+                  >
+                    View Details
+                  </Button>
                 </div>
               </Card>
             ))}

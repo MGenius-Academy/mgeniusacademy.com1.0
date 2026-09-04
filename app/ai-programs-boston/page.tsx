@@ -1,40 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { aiPrograms } from "@/lib/ai-programs";
 
 export const metadata: Metadata = {
   title: "AI & Innovation Programs",
   description:
     "Elite AI, invention, and entrepreneurship programs for advanced K-8 students in Newton, MA and the Greater Boston area.",
 };
-
-const programs = [
-  {
-    name: "AI Chatbot: The Chief AI Entrepreneur Program",
-    requirement: "EP5 completed or G6+ (Selected, Required)",
-    image: "/images/ai-programs-boston/AI-Chatbot.jpg",
-    description:
-      "An elite founder-track program for future CEOs and CTOs. From AI product development to international competitions like CP and YTC, students are trained to build, lead, and compete at the highest level.",
-  },
-  {
-    name: "3D Creation: The 3D Invention & Toy Design Program",
-    requirement: "EP3 completed or G4+ (Selected, Required)",
-    image: "/images/ai-programs-boston/width_1536.webp",
-    description:
-      "An elite maker program where original ideas are transformed into real products for competition and global display. Through rigorous design, 3D prototyping, and presentation training, students prepare for high-level invention showcases such as the Chicago Toy Show.",
-  },
-  {
-    name: "NeuroMaker STEM: AI Future Lab",
-    requirement: "Age Group: G6+",
-    image: "/images/ai-programs-boston/AI.png",
-    description:
-      "Introduces students to AI, coding, and brain-computer interface concepts through hands-on projects such as gesture tracking, object detection, and EMG-based control.",
-  },
-];
 
 export default function AiProgramsPage() {
   return (
@@ -61,8 +40,8 @@ export default function AiProgramsPage() {
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {programs.map((program) => (
-              <Card key={program.name} className="h-full gap-4 overflow-hidden py-0">
+            {aiPrograms.map((program) => (
+              <Card key={program.slug} className="h-full gap-4 overflow-hidden py-0">
                 <div className="relative aspect-video overflow-hidden">
                   <Image
                     src={program.image}
@@ -79,6 +58,15 @@ export default function AiProgramsPage() {
                   <p className="text-sm text-muted-foreground">
                     {program.description}
                   </p>
+                  <Button
+                    size="sm"
+                    className="mt-auto w-fit bg-accent text-accent-foreground hover:bg-accent/90"
+                    render={
+                      <Link href={`/ai-programs-boston/${program.slug}`} />
+                    }
+                  >
+                    View Details
+                  </Button>
                 </div>
               </Card>
             ))}

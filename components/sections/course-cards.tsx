@@ -8,9 +8,8 @@ const courses = [
   {
     title: "AI-Powered Tech Entrepreneurship Program",
     href: "/ai-programs-boston",
-    image: "/images/home/home-course-3.jpg",
+    image: "/images/home/curriculum_ceo.png",
     alt: "Young CEO & CTO: AI-Powered Tech Entrepreneurship Program",
-    // Source photo has the wrong baked-in label ("Singapore Math"); overlay covers it.
     overlayTitle: "Young CEO & CTO",
     description:
       "AI-Powered Tech Entrepreneurship Program: Combines cutting-edge AI tools with entrepreneurial thinking, guiding students to hand-craft AI-driven products, build prototypes, and pitch business concepts—fostering future leaders with technical depth and vision.",
@@ -18,9 +17,8 @@ const courses = [
   {
     title: "Engineering Course",
     href: "/curriculum/engineering-2",
-    image: "/images/home/home-course-2.jpg",
+    image: "/images/home/curriculum_engineering.png",
     alt: "Engineering Course",
-    // Source photo has the wrong baked-in label ("Innovation Program"); overlay covers it.
     overlayTitle: "Engineering Course",
     description:
       "Focuses on mechanical design, electronics, robotics, and 3D printing. Students merge hardware and software to build functional prototypes and solve complex real-world engineering challenges.",
@@ -28,9 +26,8 @@ const courses = [
   {
     title: "Advancement & Competition Math Course",
     href: "/curriculum/singapore-math",
-    image: "/images/home/home-course-1.jpg",
+    image: "/images/home/curriculum_math.png",
     alt: "Math Advancement & Competition Math Course",
-    // Source photo has the wrong baked-in label ("Engineering"); overlay covers it.
     overlayTitle: "Math",
     description:
       "Advancement & Competition Math Course: Builds rigorous mathematical logic and problem-solving skills, with specialized coaching for top competitions including Math Kangaroo and Noetic.",
@@ -48,9 +45,8 @@ const courses = [
   {
     title: "Hands-on Camps & Workshops",
     href: "/mga-camp/stem-summer-camps-boston",
-    image: "/images/home/home-course-4.jpg",
+    image: "/images/home/curriculum_camp.png",
     alt: "Hands-on Camps & Workshops",
-    // Source photo has the wrong baked-in label ("STEM Camp"); overlay covers it.
     overlayTitle: "Camps & Workshops",
     description:
       "Hands-on Camps & Workshops: Year-round seasonal STEM camps and immersive weekend workshops, offering intensive project-based learning in robotics, AI, 3D design, and maker challenges.",
@@ -78,8 +74,8 @@ export function CourseCards() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   {course.overlayTitle ? (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/65">
-                      <span className="px-4 text-center text-3xl font-extrabold text-white drop-shadow-md sm:text-4xl">
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/35">
+                      <span className="px-4 text-center text-3xl font-extrabold text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] sm:text-4xl">
                         {course.overlayTitle}
                       </span>
                     </div>
