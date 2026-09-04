@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { CalendarIcon } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
@@ -8,75 +9,13 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site-config";
+import { camps } from "@/lib/camps";
 
 export const metadata: Metadata = {
   title: "STEM Summer Camps in Boston",
   description:
     "Explore MGA's 2026 lineup of week-long STEM summer camps in Newton, MA — AI robots, battle bots, drones, chemistry, and invention-based programs for K-8 students.",
 };
-
-const camps = [
-  {
-    title: "AI Humanoid Robot Camp",
-    ageGroup: "Grade 4+",
-    image: "/images/mga-camp_stem-summer-camps-boston/AI-robot.jpg",
-  },
-  {
-    title: "Battle Bot Arena Camp",
-    ageGroup: "Grade 2+",
-    image: "/images/mga-camp_stem-summer-camps-boston/battle-bot-1024x810.jpg",
-  },
-  {
-    title: "Build Your Own Claw Machine Camp",
-    ageGroup: "Grade 4+",
-    image: "/images/mga-camp_stem-summer-camps-boston/claw-1024x810.jpg",
-  },
-  {
-    title: "Chemistry Mini Lab Camp",
-    ageGroup: "Grade 4-7",
-    image: "/images/mga-camp_stem-summer-camps-boston/chemi-1024x810.jpg",
-  },
-  {
-    title: "Electric Car & Rider Camp",
-    ageGroup: "Grade 4+",
-    image: "/images/mga-camp_stem-summer-camps-boston/electric-car-1024x810.jpg",
-  },
-  {
-    title: "Magic Kitchen Science Camp",
-    ageGroup: "K-Grade 5",
-    image: "/images/mga-camp_stem-summer-camps-boston/kitchen-1024x810.jpg",
-  },
-  {
-    title: "Mystery of the Body & Brain Camp",
-    ageGroup: "K-Grade 5",
-    image: "/images/mga-camp_stem-summer-camps-boston/body-1024x810.jpg",
-  },
-  {
-    title: "Omni Drone Academy Camp",
-    ageGroup: "Grade 2+",
-    image: "/images/mga-camp_stem-summer-camps-boston/Drone-1024x810.jpg",
-  },
-  {
-    title: "Scratch Coding & 3D Design Camp",
-    ageGroup: "K-Grade 5",
-    image: "/images/mga-camp_stem-summer-camps-boston/3D-coding-1024x810.jpg",
-  },
-  {
-    title: "Shadow Studio: Shadow Puppetry",
-    ageGroup: "Grade 1-5",
-    image: "/images/mga-camp_stem-summer-camps-boston/shadow-studio-1024x810.jpg",
-  },
-  {
-    title: "Smart Home Designers Lab Camp",
-    ageGroup: "Grade 2+",
-    image: "/images/mga-camp_stem-summer-camps-boston/smart-home-1024x810.jpg",
-  },
-  {
-    title: "Engineering Invention Camp",
-    ageGroup: "K-Grade 5",
-    image: "/images/mga-camp_stem-summer-camps-boston/little-inventor-1024x810.jpg",
-  },
-];
 
 export default function StemSummerCampsBostonPage() {
   return (
@@ -102,7 +41,7 @@ export default function StemSummerCampsBostonPage() {
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {camps.map((camp) => (
-              <Card key={camp.title} className="h-full gap-3 overflow-hidden py-0">
+              <Card key={camp.slug} className="h-full gap-3 overflow-hidden py-0">
                 <div className="relative aspect-4/3 overflow-hidden">
                   <Image
                     src={camp.image}
@@ -117,6 +56,17 @@ export default function StemSummerCampsBostonPage() {
                     <CalendarIcon className="size-3" aria-hidden />
                     {camp.ageGroup}
                   </Badge>
+                  <Button
+                    size="sm"
+                    className="mt-auto w-fit bg-accent text-accent-foreground hover:bg-accent/90"
+                    render={
+                      <Link
+                        href={`/mga-camp/stem-summer-camps-boston/${camp.slug}`}
+                      />
+                    }
+                  >
+                    Details
+                  </Button>
                 </div>
               </Card>
             ))}

@@ -39,7 +39,7 @@ export default function MgaCampPage() {
   return (
     <>
       <PageHero
-        eyebrow="MGA Camp"
+        eyebrow="Camp & Workshop"
         title="STEM Camps for K-8 Makers"
         description="Hands-on summer and school-break camps in Newton, MA, where kids build robots, code, and invent — not just watch."
       />

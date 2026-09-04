@@ -39,13 +39,28 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    label: "MGA Camp",
+    label: "Camp & Workshop",
     href: "/mga-camp",
     children: [
       {
         label: "Week Camp",
         href: "/mga-camp/stem-summer-camps-boston",
         description: "STEM summer camps in Boston",
+      },
+      {
+        label: "Day Camp",
+        href: "/mga-camp/day-camps-boston",
+        description: "School-break day camps in Newton",
+      },
+      {
+        label: "Workshop",
+        href: "/workshop-event",
+        description: "Mini workshops & open houses",
+      },
+      {
+        label: "Birthday Party",
+        href: "/birthday-party",
+        description: "STEM birthday parties",
       },
     ],
   },
@@ -83,17 +98,7 @@ export const mainNav: NavItem[] = [
     label: "Events",
     href: "/events",
     children: [
-      {
-        label: "Event & Workshop",
-        href: "/workshop-event",
-        description: "Upcoming workshops",
-      },
       { label: "News", href: "/eventnews", description: "Latest from MGA" },
-      {
-        label: "Birthday Party",
-        href: "/birthday-party",
-        description: "STEM birthday parties",
-      },
     ],
   },
   {
