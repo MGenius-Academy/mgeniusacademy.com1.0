@@ -7,7 +7,7 @@ import { footerLinks, mainNav } from "@/lib/nav";
 import { siteConfig } from "@/lib/site-config";
 
 const socialQrs = [
-  { label: "WeChat", qr: "/images/contact/contact_wx.jpg" },
+  { label: "WeChat", qr: "/images/contact/poster_wx.png" },
   {
     label: "Instagram",
     qr: "/images/contact/contact_ins.png",

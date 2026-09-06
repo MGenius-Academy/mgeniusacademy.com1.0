@@ -42,7 +42,7 @@ const socials = [
     icon: MessageCircleIcon,
     label: "WeChat",
     value: "MGeniusAcademy",
-    qr: "/images/contact/contact_wx.jpg",
+    qr: "/images/contact/poster_wx.png",
   },
   {
     icon: InstagramIcon,
@@ -147,6 +147,35 @@ export default function ContactPage() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="mx-auto mt-14 max-w-2xl text-center">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              WeChat Customer Service
+            </h2>
+            <p className="mt-2 text-muted-foreground">
+              Scan the QR code to chat with our team directly on WeChat.
+            </p>
+          </div>
+          <div className="mx-auto mt-8 max-w-xs">
+            <div className="flex flex-col items-center gap-3 rounded-2xl border border-border p-6 text-center">
+              <span className="flex size-40 items-center justify-center rounded-xl bg-white p-2 ring-1 ring-border">
+                <Image
+                  src="/images/contact/helper_wx.jpg"
+                  alt="WeChat customer service QR code"
+                  width={240}
+                  height={240}
+                  className="size-full object-contain"
+                />
+              </span>
+              <div>
+                <p className="flex items-center justify-center gap-1.5 text-sm font-semibold text-foreground">
+                  <MessageCircleIcon className="size-4 text-primary" aria-hidden />
+                  WeChat Customer Service
+                </p>
+                <p className="text-sm text-muted-foreground">Grace 老师</p>
+              </div>
+            </div>
           </div>
         </Container>
       </section>

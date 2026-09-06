@@ -79,6 +79,12 @@ export function SiteHeader() {
           >
             Book a Free Trial
           </Button>
+          <Button
+            variant="outline"
+            render={<a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />}
+          >
+            Enroll Now
+          </Button>
         </div>
 
         <Sheet>
@@ -128,6 +134,15 @@ export function SiteHeader() {
                 }
               >
                 Book a Free Trial
+              </Button>
+              <Button
+                variant="outline"
+                className="mt-2"
+                render={
+                  <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
+                }
+              >
+                Enroll Now
               </Button>
             </nav>
           </SheetContent>

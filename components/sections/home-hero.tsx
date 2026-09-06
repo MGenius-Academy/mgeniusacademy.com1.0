@@ -121,6 +121,15 @@ export function HomeHero() {
             >
               Book a Free Trial Class in Boston Today
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              render={
+                <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
+              }
+            >
+              Enroll Now
+            </Button>
             <Button size="lg" variant="outline" render={<Link href="/curriculum" />}>
               Explore STEM Courses
             </Button>

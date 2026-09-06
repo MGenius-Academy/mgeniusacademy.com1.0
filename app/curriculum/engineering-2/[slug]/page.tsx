@@ -108,6 +108,15 @@ export default async function EngineeringLevelDetailPage(
             >
               Book a Trial Class
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              render={
+                <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
+              }
+            >
+              Enroll Now
+            </Button>
             <Link
               href="/curriculum/engineering-2"
               className="flex items-center gap-1.5 text-sm font-medium text-primary"

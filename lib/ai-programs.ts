@@ -173,28 +173,6 @@ export const aiPrograms: AiProgram[] = [
         learnMoreLabel: "Learn More About YTC",
       },
     ],
-    instructors: [
-      {
-        name: "Yuesen Wang",
-        title: "Postdoctoral Researcher · CTO",
-        image: "/images/ai-programs-boston/instructors/yuesen-wang.jpg",
-        bullets: [
-          "15+ years in mechanical and automotive engineering research",
-          "Expertise in mechanical, electrical, control, and chemical engineering",
-          "Guides students in engineering and AI through real-world problem solving",
-        ],
-      },
-      {
-        name: "Tianze Li",
-        title: "Lead Engineering Instructional Specialist",
-        image: "/images/ai-programs-boston/instructors/tianze-li.jpg",
-        bullets: [
-          "Strong hands-on experience in circuit design, programming, and mechanical structures",
-          "Experienced in the full process from concept to finished product",
-          "Encourages students to explore, build, and create through hands-on learning",
-        ],
-      },
-    ],
     whoShouldApply: [
       "Students in Grade 6 and above with strong logical thinking and a solid learning foundation",
       "Students passionate about technology and AI, curious about innovation and entrepreneurship",

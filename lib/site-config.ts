@@ -17,4 +17,5 @@ export const siteConfig = {
   },
   trialFormUrl:
     "https://app.tryplayground.com/form/5KIochWriASAmshGsTag/fmWrZMJgpIYeCIW51Rrv",
+  enrollUrl: "https://app.tryplayground.com/listings/y0bckTdXNc7tGIiafdPs",
 };

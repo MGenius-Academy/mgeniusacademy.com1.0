@@ -14,6 +14,9 @@ import {
   MapPinIcon,
   MailIcon,
   ArrowRightIcon,
+  GraduationCapIcon,
+  UtensilsIcon,
+  SparklesIcon,
 } from "lucide-react";
 import { Container } from "@/components/container";
 import { cn } from "@/lib/utils";
@@ -23,6 +26,9 @@ const lora = Lora({ subsets: ["latin"], weight: ["600", "700"] });
 
 const REGISTER_URL =
   "https://app.tryplayground.com/form/5KIochWriASAmshGsTag/fmWrZMJgpIYeCIW51Rrv";
+
+const CAMP_DAY_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfbuORDV6T74iJaLnJtC-06oBo9__OB21GGtgX3GrNYwNbrKw/viewform";
 
 export const metadata: Metadata = {
   title: "MGA STEM Day Camps (2026–2027)",
@@ -38,6 +44,68 @@ const DOT_COLORS = [
   "bg-[#F6B93B]",
   "bg-[#F472B6]",
 ];
+
+const OVERVIEW_FACTS = [
+  {
+    icon: ClockIcon,
+    chipBg: "bg-[#4F8EF7]/15",
+    chipText: "text-[#3B4FD1]",
+    label: "Camp Hours",
+    value: "8:30 AM – 3:00 PM",
+    note: "*Extended time available for select sessions",
+  },
+  {
+    icon: GraduationCapIcon,
+    chipBg: "bg-[#8B5CF6]/15",
+    chipText: "text-[#8B5CF6]",
+    label: "Grades",
+    value: "PreK – G5",
+  },
+  {
+    icon: DollarSignIcon,
+    chipBg: "bg-[#F6B93B]/20",
+    chipText: "text-[#B7791F]",
+    label: "Pricing / Day",
+    value: "$169 early bird · $189 standard",
+  },
+  {
+    icon: PercentIcon,
+    chipBg: "bg-[#33C57D]/15",
+    chipText: "text-[#209163]",
+    label: "Ways to Save",
+    value: "$10 off/day multi-day · sibling discount",
+  },
+  {
+    icon: SunIcon,
+    chipBg: "bg-[#F0554C]/15",
+    chipText: "text-[#E2483F]",
+    label: "Extended Care",
+    value: "Available for select sessions",
+    note: "Contact us for details",
+  },
+  {
+    icon: UtensilsIcon,
+    chipBg: "bg-[#F472B6]/15",
+    chipText: "text-[#DB4A8C]",
+    label: "Lunch Option",
+    value: "Pizza, pasta & juice — $15",
+  },
+  {
+    icon: MapPinIcon,
+    chipBg: "bg-[#4F8EF7]/15",
+    chipText: "text-[#3B4FD1]",
+    label: "Location",
+    value: "288 Walnut St, Suite 300, Newton, MA",
+  },
+  {
+    icon: MailIcon,
+    chipBg: "bg-[#8B5CF6]/15",
+    chipText: "text-[#8B5CF6]",
+    label: "Register / Questions",
+    value: "info@mgeniusacademy.com",
+    href: "mailto:info@mgeniusacademy.com",
+  },
+] as const;
 
 export default function DayCampsBostonPage() {
   return (
@@ -97,7 +165,84 @@ export default function DayCampsBostonPage() {
       {/* Body */}
       <section className="bg-gradient-to-b from-orange-50 via-rose-50/60 to-indigo-50/60 py-16">
         <Container className="max-w-3xl">
+          {/* General Details & Overview */}
           <div className="flex items-center gap-3">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#8B5CF6]/15 text-[#8B5CF6]">
+              <SparklesIcon className="size-5" aria-hidden />
+            </span>
+            <div>
+              <h2
+                className={cn(
+                  lora.className,
+                  "text-2xl font-bold text-[#1B2559] sm:text-3xl",
+                )}
+              >
+                General Details &amp; Overview
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Everything you need to know before you pick a day
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 rounded-3xl border border-border bg-white p-5 sm:p-8">
+            <p className="text-base text-muted-foreground text-pretty">
+              When school&rsquo;s out, the building begins! Full-day,
+              hands-on camps packed with circuits, laser cutting, 3D design
+              &amp; engineering — right here in Newton.
+            </p>
+
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {OVERVIEW_FACTS.map((fact) => (
+                <div
+                  key={fact.label}
+                  className="flex flex-col gap-2 rounded-2xl border border-border/70 bg-secondary/20 p-4"
+                >
+                  <span
+                    className={cn(
+                      "flex size-9 items-center justify-center rounded-lg",
+                      fact.chipBg,
+                      fact.chipText,
+                    )}
+                  >
+                    <fact.icon className="size-4" aria-hidden />
+                  </span>
+                  <p className="text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
+                    {fact.label}
+                  </p>
+                  {"href" in fact && fact.href ? (
+                    <a
+                      href={fact.href}
+                      className="cursor-pointer text-sm font-semibold text-[#1B2559] break-words hover:underline"
+                    >
+                      {fact.value}
+                    </a>
+                  ) : (
+                    <p className="text-sm font-semibold text-[#1B2559] text-pretty break-words">
+                      {fact.value}
+                    </p>
+                  )}
+                  {"note" in fact && fact.note ? (
+                    <p className="text-xs text-muted-foreground text-pretty">
+                      {fact.note}
+                    </p>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-5 flex items-start gap-2 text-xs text-muted-foreground">
+              <TriangleAlertIcon
+                className="mt-0.5 size-3.5 shrink-0 text-[#B7791F]"
+                aria-hidden
+              />
+              Multi-day &amp; sibling discounts can&rsquo;t be combined with
+              Early Bird pricing — we&rsquo;ll pick whichever saves you more.
+            </p>
+          </div>
+
+          {/* Pick Your Camp Days */}
+          <div className="mt-14 flex items-center gap-3">
             <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#4F8EF7]/15 text-[#3B4FD1]">
               <CalendarDaysIcon className="size-5" aria-hidden />
             </span>
@@ -120,10 +265,13 @@ export default function DayCampsBostonPage() {
             {dayCamps.map((camp, i) => {
               const isRecess = camp.occasion === "December Recess";
               return (
-                <div
+                <a
                   key={camp.date}
+                  href={CAMP_DAY_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
-                    "relative rounded-2xl border bg-white p-4",
+                    "relative cursor-pointer rounded-2xl border bg-white p-4 transition-transform hover:scale-[1.02] hover:shadow-md",
                     isRecess
                       ? "border-[#F6B93B] bg-[#FFFBEB]"
                       : "border-border",
@@ -156,13 +304,13 @@ export default function DayCampsBostonPage() {
                   <p className="mt-0.5 text-xs text-muted-foreground">
                     {camp.occasion}
                   </p>
-                </div>
+                </a>
               );
             })}
           </div>
 
           <a
-            href={REGISTER_URL}
+            href={CAMP_DAY_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 flex cursor-pointer items-center justify-between gap-4 rounded-2xl bg-gradient-to-br from-[#F2685F] to-[#E2483F] px-6 py-5 transition-transform hover:scale-[1.01]"

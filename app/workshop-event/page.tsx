@@ -5,6 +5,8 @@ import { ArrowRightIcon, CalendarIcon, MapPinIcon } from "lucide-react";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { pastWorkshopEvents } from "@/lib/workshop-events";
 
 export const metadata: Metadata = {
   title: "Event & Workshop",
@@ -57,7 +59,10 @@ export default function WorkshopEventPage() {
 
       <section className="py-16">
         <Container>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            Upcoming Events
+          </h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {events.map((event) => (
               <Card key={event.title} className="h-full gap-3 overflow-hidden py-0">
                 <div className="relative aspect-4/3 overflow-hidden bg-muted">
@@ -97,6 +102,48 @@ export default function WorkshopEventPage() {
             Want to be notified about future workshops and open houses? Reach out and
             we’ll add you to the list.
           </p>
+
+          <h2 className="mt-16 text-2xl font-bold tracking-tight sm:text-3xl">
+            Past Events
+          </h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            {pastWorkshopEvents.map((event) => (
+              <Card key={event.slug} className="h-full gap-3 overflow-hidden py-0">
+                <div className="relative aspect-4/3 overflow-hidden bg-muted">
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    className="object-contain p-3"
+                  />
+                  <Badge
+                    variant="secondary"
+                    className="absolute top-3 right-3"
+                  >
+                    Ended
+                  </Badge>
+                </div>
+                <div className="flex flex-1 flex-col gap-2 px-5 pb-5">
+                  <h3 className="font-semibold leading-snug">{event.title}</h3>
+                  <p className="flex items-start gap-1.5 text-sm text-muted-foreground">
+                    <CalendarIcon className="mt-0.5 size-3.5 shrink-0" aria-hidden />
+                    {event.date}
+                  </p>
+                  <p className="flex items-start gap-1.5 text-sm text-muted-foreground">
+                    <MapPinIcon className="mt-0.5 size-3.5 shrink-0" aria-hidden />
+                    {event.location}
+                  </p>
+                  <Link
+                    href={`/workshop-event/${event.slug}`}
+                    className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium text-primary"
+                  >
+                    Explore More
+                    <ArrowRightIcon className="size-3.5" />
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </div>
         </Container>
       </section>
 

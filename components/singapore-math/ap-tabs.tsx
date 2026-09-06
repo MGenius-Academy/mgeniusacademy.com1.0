@@ -55,19 +55,31 @@ export function ApTabs() {
                   </li>
                 ))}
               </ul>
-              <Button
-                size="lg"
-                className="mt-2 w-fit bg-accent text-accent-foreground hover:bg-accent/90"
-                render={
-                  <a
-                    href={siteConfig.trialFormUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-              >
-                Book a Trial Class
-              </Button>
+              <div className="mt-2 flex flex-wrap gap-3">
+                <Button
+                  size="lg"
+                  className="w-fit bg-accent text-accent-foreground hover:bg-accent/90"
+                  render={
+                    <a
+                      href={siteConfig.trialFormUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
+                >
+                  Book a Trial Class
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="w-fit"
+                  render={
+                    <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
+                  }
+                >
+                  Enroll Now
+                </Button>
+              </div>
             </div>
           </div>
         </TabsContent>

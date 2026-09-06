@@ -191,6 +191,14 @@ export default function FaqPage() {
               </Button>
               <Button
                 variant="outline"
+                render={
+                  <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
+                }
+              >
+                Enroll Now
+              </Button>
+              <Button
+                variant="outline"
                 render={<a href={`mailto:${siteConfig.email}`} />}
               >
                 Contact Us
