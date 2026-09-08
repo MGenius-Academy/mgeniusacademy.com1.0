@@ -94,7 +94,32 @@ export const mainNav: NavItem[] = [
       },
     ],
   },
-  { label: "News", href: "/eventnews" },
+  {
+    label: "News",
+    href: "/eventnews",
+    children: [
+      {
+        label: "Learning",
+        href: `/eventnews?category=${encodeURIComponent("Learning")}`,
+        description: "Classroom stories & student projects",
+      },
+      {
+        label: "Competitions",
+        href: `/eventnews?category=${encodeURIComponent("Competitions")}`,
+        description: "Contest results & award wins",
+      },
+      {
+        label: "Camp & Workshop",
+        href: `/eventnews?category=${encodeURIComponent("Camp & Workshop")}`,
+        description: "Camp recaps & workshop highlights",
+      },
+      {
+        label: "Community",
+        href: `/eventnews?category=${encodeURIComponent("Community")}`,
+        description: "Open houses, events & community news",
+      },
+    ],
+  },
   {
     label: "More",
     children: [
@@ -102,7 +127,6 @@ export const mainNav: NavItem[] = [
       { label: "Contact Us", href: "/contact" },
       { label: "Our Team", href: "/our-team" },
       { label: "Join Us", href: "/join-us" },
-      { label: "MGA Policy", href: "/mga-policy" },
       { label: "FAQ", href: "/faq" },
       { label: "Volunteer", href: "/volunteer-opportunities" },
     ],

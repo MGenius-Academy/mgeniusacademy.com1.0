@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
@@ -37,7 +38,9 @@ export default async function EventNewsPage() {
 
       <section className="py-16">
         <Container>
-          <NewsGrid posts={posts} />
+          <Suspense fallback={null}>
+            <NewsGrid posts={posts} />
+          </Suspense>
         </Container>
       </section>
 

@@ -44,6 +44,11 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+            <li>
+              <Link href="/mga-policy" className="hover:text-primary">
+                MGA Policy
+              </Link>
+            </li>
           </ul>
         </div>
 

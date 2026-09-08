@@ -8,14 +8,14 @@ import { CompassIcon, LightbulbIcon, WrenchIcon, WarehouseIcon } from "lucide-re
 export const metadata: Metadata = {
   title: "Why Choose MGA",
   description:
-    "MGenius Academy (MGA) is a STEM, AI, and engineering academy in Newton/Boston with a 4,000-square-foot learning space for hands-on K-8 education.",
+    "MGenius Academy (MGA) is a STEM, AI, and engineering academy in Newton/Boston with a 4,000-square-foot learning space for hands-on K-12 education.",
 };
 
 const pillars = [
   {
     icon: CompassIcon,
     title: "Mission",
-    body: "MGenius Academy (MGA) is a STEM, AI, and engineering academy based in the Boston area, dedicated to creating an open and creative learning environment for children. We provide hands-on STEM education for students in grades K–8, helping them develop independent thinking and real-world problem-solving skills — empowering them to explore, create, and innovate through engineering, mathematics, and technology. In 2024, MGA integrated the Spark Math program to further strengthen our math curriculum.",
+    body: "MGenius Academy (MGA) is a STEM, AI, and engineering academy based in the Boston area, dedicated to creating an open and creative learning environment for children. We provide hands-on STEM education for students in grades K–12, helping them develop independent thinking and real-world problem-solving skills — empowering them to explore, create, and innovate through engineering, mathematics, and technology. In 2024, MGA integrated the Spark Math program to further strengthen our math curriculum.",
     image: "/images/about/MGA-1-1024x768.jpg",
   },
   {
@@ -33,14 +33,14 @@ const pillars = [
 ];
 
 const gallery = [
-  "/images/about/MGA-2-1024x768.jpg",
-  "/images/about/MGA-4-1024x768.jpg",
-  "/images/about/MGA-6-1024x768.jpg",
-  "/images/about/MGA-7-1024x768.jpg",
+  "/images/about/MGA-12-1024x768.jpg",
   "/images/about/MGA-8-1024x768.jpg",
+  "/images/about/MGA-7-1024x768.jpg",
+  "/images/about/MGA-6-1024x768.jpg",
+  "/images/about/MGA-2-1024x768.jpg",
   "/images/about/MGA-10-1024x768.jpg",
   "/images/about/MGA-11-1024x768.jpg",
-  "/images/about/MGA-12-1024x768.jpg",
+  "/images/about/MGA-4-1024x768.jpg",
 ];
 
 export default function AboutPage() {

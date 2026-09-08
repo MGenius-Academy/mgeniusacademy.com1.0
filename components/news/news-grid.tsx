@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ArrowRightIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,12 +18,26 @@ export type NewsPost = {
   date: string;
 };
 
-const categories = ["All", "Camp", "Competitions", "Learning"] as const;
+const categories = [
+  "All",
+  "Learning",
+  "Competitions",
+  "Camp & Workshop",
+  "Community",
+] as const;
 
 type Category = (typeof categories)[number];
 
 export function NewsGrid({ posts }: { posts: NewsPost[] }) {
+  const searchParams = useSearchParams();
   const [activeCategory, setActiveCategory] = useState<Category>("All");
+
+  useEffect(() => {
+    const param = searchParams.get("category");
+    if (param && (categories as readonly string[]).includes(param)) {
+      setActiveCategory(param as Category);
+    }
+  }, [searchParams]);
 
   const filteredPosts =
     activeCategory === "All"
