@@ -7,6 +7,7 @@ type CtaBannerProps = {
   description?: string;
   buttonLabel?: string;
   href?: string;
+  showEnrollButton?: boolean;
 };
 
 export function CtaBanner({
@@ -14,6 +15,7 @@ export function CtaBanner({
   description = "Serving families across Newton, Waltham, Lexington, and the Greater Boston area.",
   buttonLabel = "Book a Free Trial",
   href = siteConfig.trialFormUrl,
+  showEnrollButton = true,
 }: CtaBannerProps) {
   return (
     <section className="bg-primary py-14 text-primary-foreground sm:py-16">
@@ -28,16 +30,18 @@ export function CtaBanner({
           >
             {buttonLabel}
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
-            render={
-              <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
-            }
-          >
-            Enroll Now
-          </Button>
+          {showEnrollButton ? (
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              render={
+                <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
+              }
+            >
+              Enroll Now
+            </Button>
+          ) : null}
         </div>
       </Container>
     </section>

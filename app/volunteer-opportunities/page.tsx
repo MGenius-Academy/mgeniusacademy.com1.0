@@ -125,6 +125,7 @@ export default function VolunteerOpportunitiesPage() {
         description="Email us to learn more about current volunteer openings at MGA."
         buttonLabel="Email Us"
         href={`mailto:${siteConfig.email}?subject=Volunteer%20Interest`}
+        showEnrollButton={false}
       />
     </>
   );

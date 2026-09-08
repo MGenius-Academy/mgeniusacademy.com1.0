@@ -45,7 +45,7 @@ const DOT_COLORS = [
   "bg-[#F472B6]",
 ];
 
-const OVERVIEW_FACTS = [
+const OVERVIEW_HIGHLIGHTS = [
   {
     icon: ClockIcon,
     chipBg: "bg-[#4F8EF7]/15",
@@ -61,20 +61,9 @@ const OVERVIEW_FACTS = [
     label: "Grades",
     value: "PreK – G5",
   },
-  {
-    icon: DollarSignIcon,
-    chipBg: "bg-[#F6B93B]/20",
-    chipText: "text-[#B7791F]",
-    label: "Pricing / Day",
-    value: "$169 early bird · $189 standard",
-  },
-  {
-    icon: PercentIcon,
-    chipBg: "bg-[#33C57D]/15",
-    chipText: "text-[#209163]",
-    label: "Ways to Save",
-    value: "$10 off/day multi-day · sibling discount",
-  },
+] as const;
+
+const OVERVIEW_DETAILS = [
   {
     icon: SunIcon,
     chipBg: "bg-[#F0554C]/15",
@@ -91,13 +80,6 @@ const OVERVIEW_FACTS = [
     value: "Pizza, pasta & juice — $15",
   },
   {
-    icon: MapPinIcon,
-    chipBg: "bg-[#4F8EF7]/15",
-    chipText: "text-[#3B4FD1]",
-    label: "Location",
-    value: "288 Walnut St, Suite 300, Newton, MA",
-  },
-  {
     icon: MailIcon,
     chipBg: "bg-[#8B5CF6]/15",
     chipText: "text-[#8B5CF6]",
@@ -106,6 +88,64 @@ const OVERVIEW_FACTS = [
     href: "mailto:info@mgeniusacademy.com",
   },
 ] as const;
+
+type OverviewFact =
+  | (typeof OVERVIEW_HIGHLIGHTS)[number]
+  | (typeof OVERVIEW_DETAILS)[number];
+
+function OverviewFactCard({
+  fact,
+  emphasized = false,
+}: {
+  fact: OverviewFact;
+  emphasized?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col gap-2 rounded-2xl border border-border/70 bg-secondary/20",
+        emphasized ? "p-5" : "p-4",
+      )}
+    >
+      <span
+        className={cn(
+          "flex items-center justify-center rounded-lg",
+          emphasized ? "size-11" : "size-9",
+          fact.chipBg,
+          fact.chipText,
+        )}
+      >
+        <fact.icon className={emphasized ? "size-5" : "size-4"} aria-hidden />
+      </span>
+      <p className="text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
+        {fact.label}
+      </p>
+      {"href" in fact && fact.href ? (
+        <a
+          href={fact.href}
+          className={cn(
+            "cursor-pointer font-semibold text-[#1B2559] break-words hover:underline",
+            emphasized ? "text-base" : "text-sm",
+          )}
+        >
+          {fact.value}
+        </a>
+      ) : (
+        <p
+          className={cn(
+            "font-semibold text-[#1B2559] text-pretty break-words",
+            emphasized ? "text-base" : "text-sm",
+          )}
+        >
+          {fact.value}
+        </p>
+      )}
+      {"note" in fact && fact.note ? (
+        <p className="text-xs text-muted-foreground text-pretty">{fact.note}</p>
+      ) : null}
+    </div>
+  );
+}
 
 export default function DayCampsBostonPage() {
   return (
@@ -192,42 +232,15 @@ export default function DayCampsBostonPage() {
               &amp; engineering — right here in Newton.
             </p>
 
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {OVERVIEW_FACTS.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="flex flex-col gap-2 rounded-2xl border border-border/70 bg-secondary/20 p-4"
-                >
-                  <span
-                    className={cn(
-                      "flex size-9 items-center justify-center rounded-lg",
-                      fact.chipBg,
-                      fact.chipText,
-                    )}
-                  >
-                    <fact.icon className="size-4" aria-hidden />
-                  </span>
-                  <p className="text-[11px] font-semibold tracking-wide text-muted-foreground uppercase">
-                    {fact.label}
-                  </p>
-                  {"href" in fact && fact.href ? (
-                    <a
-                      href={fact.href}
-                      className="cursor-pointer text-sm font-semibold text-[#1B2559] break-words hover:underline"
-                    >
-                      {fact.value}
-                    </a>
-                  ) : (
-                    <p className="text-sm font-semibold text-[#1B2559] text-pretty break-words">
-                      {fact.value}
-                    </p>
-                  )}
-                  {"note" in fact && fact.note ? (
-                    <p className="text-xs text-muted-foreground text-pretty">
-                      {fact.note}
-                    </p>
-                  ) : null}
-                </div>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {OVERVIEW_HIGHLIGHTS.map((fact) => (
+                <OverviewFactCard key={fact.label} fact={fact} emphasized />
+              ))}
+            </div>
+
+            <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {OVERVIEW_DETAILS.map((fact) => (
+                <OverviewFactCard key={fact.label} fact={fact} />
               ))}
             </div>
 
@@ -476,7 +489,7 @@ export default function DayCampsBostonPage() {
               <div className="flex shrink-0 flex-col items-center gap-2">
                 <div className="rounded-2xl bg-white p-2">
                   <Image
-                    src="/images/mga-camp_day-camps-boston/qr-register.png"
+                    src="/images/mga-camp_day-camps-boston/daycamp_qr.png"
                     alt="QR code to MGA day camp registration form"
                     width={112}
                     height={112}

@@ -8,7 +8,6 @@ import { CtaBanner } from "@/components/cta-banner";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/site-config";
 import { camps } from "@/lib/camps";
 
 export const metadata: Metadata = {
@@ -70,18 +69,6 @@ export default function StemSummerCampsBostonPage() {
                 </div>
               </Card>
             ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Button
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90"
-              render={
-                <a href={siteConfig.trialFormUrl} target="_blank" rel="noopener noreferrer" />
-              }
-            >
-              Ask About 2026 Camp Dates
-            </Button>
           </div>
         </Container>
       </section>
