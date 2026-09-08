@@ -170,7 +170,7 @@ function TestimonialsCarousel() {
           <ChevronLeftIcon />
         </Button>
 
-        <div className="flex items-center gap-2">
+        <div className="hidden items-center gap-2 sm:flex">
           {scrollSnaps.map((_, index) => (
             <button
               key={index}
