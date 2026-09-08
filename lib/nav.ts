@@ -65,17 +65,27 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    label: "Awards",
+    label: "Competition&Awards",
     children: [
       {
-        label: "Math Awards",
-        href: "/boston-stem/math-awards",
-        description: "Math Kangaroo & Noetic results",
+        label: "Boston Makers&Inventors Challenge",
+        href: "/boston-makers-inventors-challenge",
+        description: "STEM invention & AI fabrication challenge",
       },
       {
-        label: "ICW Awards",
+        label: "Invention Convention Worldwide",
         href: "/icw-awards",
-        description: "Invention Convention Worldwide",
+        description: "Global invention & innovation awards",
+      },
+      {
+        label: "Math Kangaroo Math Competition",
+        href: "/boston-stem/math-awards#math-kangaroo",
+        description: "National & state Math Kangaroo results",
+      },
+      {
+        label: "Noetic Math Competition",
+        href: "/boston-stem/math-awards#noetic",
+        description: "Noetic Learning Math Contest results",
       },
     ],
   },

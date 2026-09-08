@@ -264,7 +264,7 @@ export default function MathAwardsPage() {
                       ))}
                     </div>
 
-                    <div>
+                    <div id="math-kangaroo" className="scroll-mt-24">
                       <h3 className="mb-1 text-base font-semibold">
                         Math Kangaroo USA 2026 — National Top 20
                       </h3>
@@ -287,7 +287,7 @@ export default function MathAwardsPage() {
                       <AwardTable rows={kangaroo2026State} rankLabel="State Rank" />
                     </div>
 
-                    <div>
+                    <div id="noetic" className="scroll-mt-24">
                       <h3 className="mb-1 text-base font-semibold">
                         Noetic Learning Math Contest — 2026 Spring Awards
                       </h3>
