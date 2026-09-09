@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRightIcon, TrophyIcon } from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon, TrophyIcon } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
@@ -11,35 +10,34 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { AwardTable, NoeticTable } from "@/components/sections/math-awards-tables";
+import { AwardTable } from "@/components/sections/math-awards-tables";
 import {
   kangaroo2025,
   kangaroo2025State,
   kangaroo2026,
   kangaroo2026State,
-  noetic2026,
 } from "@/lib/math-awards-data";
 
 export const metadata: Metadata = {
-  title: "Math Competition Awards",
+  title: "Math Kangaroo Results",
   description:
-    "MGA students' results in Math Kangaroo USA and the Noetic Learning Math Contest — national and Massachusetts state awards year after year.",
+    "MGA students' national and Massachusetts state results in Math Kangaroo USA, year after year.",
 };
 
 const overallStats = [
-  { value: "50+", label: "2026 Math Awards" },
-  { value: "20", label: "Math Kangaroo Awards" },
-  { value: "23", label: "Noetic Spring Awards" },
+  { value: "3", label: "2026 National Top 1" },
+  { value: "16", label: "2026 National Top 20" },
+  { value: "4", label: "2026 MA State Top 3" },
   { value: "2025–2026", label: "Award Years" },
 ];
 
-export default function MathAwardsPage() {
+export default function MathKangarooAwardsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Boston STEM · Math Awards"
-        title="MGA Math Competition Awards & Student Achievements"
-        description="MGA students continue to achieve outstanding results in national mathematics competitions. Through structured problem-solving training and consistent practice, our students have earned awards in Math Kangaroo USA, the Noetic Learning Math Contest, and other math competitions."
+        eyebrow="Boston STEM · Math Kangaroo"
+        title="MGA Math Kangaroo National & State Results"
+        description="MGA students continue to achieve outstanding results in Math Kangaroo USA, earning National Top 1, National Top 20, and Massachusetts State Top 3 recognition year after year."
       />
 
       <section className="py-16">
@@ -55,17 +53,6 @@ export default function MathAwardsPage() {
               </div>
             ))}
           </div>
-
-          <div className="mt-12 relative overflow-hidden rounded-3xl">
-            <Image
-              src="/images/home/Noetic-rngry7x643g2yvox591iqbq0tdx5zdj1zgevoo4cg0.jpg"
-              alt="MGA students celebrating Noetic Learning Math Contest awards"
-              width={1600}
-              height={700}
-              className="h-auto w-full object-cover"
-              priority
-            />
-          </div>
         </Container>
       </section>
 
@@ -73,25 +60,19 @@ export default function MathAwardsPage() {
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Awards by Year
+              Math Kangaroo Results by Year
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Explore MGA students&apos; math competition results by year.
-              Each section includes annual highlights, award counts, and
-              student recognition lists.
+              Explore MGA students&apos; Math Kangaroo USA results by year,
+              including national rankings and Massachusetts state honors.
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <div className="mt-6">
               <Link
-                href="/boston-stem/math-awards/math-kangaroo"
-                className="rounded-full border border-border bg-background px-5 py-2 text-sm font-medium hover:bg-secondary/60"
+                href="/boston-stem/math-awards"
+                className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
               >
-                Math Kangaroo Results
-              </Link>
-              <Link
-                href="/boston-stem/math-awards/noetic"
-                className="rounded-full border border-border bg-background px-5 py-2 text-sm font-medium hover:bg-secondary/60"
-              >
-                Noetic Contest Results
+                <ArrowLeftIcon className="size-4" />
+                Back to all Math Competition Awards
               </Link>
             </div>
           </div>
@@ -103,32 +84,17 @@ export default function MathAwardsPage() {
                 className="mb-6 rounded-2xl border border-border bg-background px-6 py-2"
               >
                 <AccordionTrigger className="py-4 text-lg font-semibold">
-                  2026 Math Competition Awards
+                  2026 Math Kangaroo Results
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col gap-8 pb-2">
-                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                      {[
-                        { value: "3", label: "Math Kangaroo — National Top 1" },
-                        { value: "16", label: "Math Kangaroo — National Top 20" },
-                        { value: "4", label: "MA State Top 3" },
-                        { value: "23", label: "Noetic Spring Awards" },
-                      ].map((s) => (
-                        <div key={s.label}>
-                          <p className="text-xl font-bold text-primary">{s.value}</p>
-                          <p className="text-xs text-muted-foreground">{s.label}</p>
-                        </div>
-                      ))}
-                    </div>
-
                     <div>
                       <h3 className="mb-1 text-base font-semibold">
                         Math Kangaroo USA 2026 — National Top 20
                       </h3>
                       <p className="mb-3 text-sm text-muted-foreground">
                         MGA students achieved outstanding results, including 3
-                        National Top 1 awards, 16 National Top 20 awards, and
-                        4 Massachusetts State Top 3 awards.
+                        National Top 1 awards and 16 National Top 20 awards.
                       </p>
                       <AwardTable rows={kangaroo2026} rankLabel="National Rank" />
                     </div>
@@ -143,18 +109,6 @@ export default function MathAwardsPage() {
                       </p>
                       <AwardTable rows={kangaroo2026State} rankLabel="State Rank" />
                     </div>
-
-                    <div>
-                      <h3 className="mb-1 text-base font-semibold">
-                        Noetic Learning Math Contest — 2026 Spring Awards
-                      </h3>
-                      <p className="mb-3 text-sm text-muted-foreground">
-                        MGA students earned 3 Team Winners, 13 National Honor
-                        Roll awards, and 7 Honorable Mentions across Grade
-                        2–4 Team MGA.
-                      </p>
-                      <NoeticTable rows={noetic2026} />
-                    </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -164,24 +118,10 @@ export default function MathAwardsPage() {
                 className="rounded-2xl border border-border bg-background px-6 py-2"
               >
                 <AccordionTrigger className="py-4 text-lg font-semibold">
-                  2025 Math Competition Awards
+                  2025 Math Kangaroo Results
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col gap-8 pb-2">
-                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                      {[
-                        { value: "26", label: "National Top 20 Awards" },
-                        { value: "5", label: "MA State Top 3 Awards" },
-                        { value: "2", label: "National Top 1 Winners" },
-                        { value: "G1–G5", label: "Grades Recognized" },
-                      ].map((s) => (
-                        <div key={s.label}>
-                          <p className="text-xl font-bold text-primary">{s.value}</p>
-                          <p className="text-xs text-muted-foreground">{s.label}</p>
-                        </div>
-                      ))}
-                    </div>
-
                     <div>
                       <h3 className="mb-1 text-base font-semibold">
                         Math Kangaroo USA 2025 — National Top 20

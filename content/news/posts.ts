@@ -1,4 +1,5 @@
 export const newsSlugs = [
+  "mgenius-academy-shines-at-wecan-picnic",
   "mga-summer-camp-ai-humanoid-robot-camp",
   "mga-students-shine-at-math-kangaroo-2026",
   "when-mga-robots-arrived-at-one-of-the-worlds-most-loved-childrens-museums",

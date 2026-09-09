@@ -79,12 +79,12 @@ export const mainNav: NavItem[] = [
       },
       {
         label: "Math Kangaroo Math Competition",
-        href: "/boston-stem/math-awards#math-kangaroo",
+        href: "/boston-stem/math-awards/math-kangaroo",
         description: "National & state Math Kangaroo results",
       },
       {
         label: "Noetic Math Competition",
-        href: "/boston-stem/math-awards#noetic",
+        href: "/boston-stem/math-awards/noetic",
         description: "Noetic Learning Math Contest results",
       },
     ],
