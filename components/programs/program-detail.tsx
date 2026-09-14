@@ -21,7 +21,7 @@ export function ProgramDetail({
   backHref,
   backLabel,
   ctaTitle = "Ready for the Next Level?",
-  ctaDescription = "Book a free trial class and talk to our team about which track fits your child.",
+  ctaDescription = "Book a trial class and talk to our team about which track fits your child.",
 }: {
   program: AiProgram;
   eyebrow: string;

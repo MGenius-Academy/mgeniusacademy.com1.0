@@ -16,6 +16,13 @@ export const metadata: Metadata = {
 
 const events = [
   {
+    title: "Introduction to Speaking in Interviews & Professional Settings",
+    date: "Sep 17 – Nov 5, 2026",
+    image: "/images/workshop-event/workshop_michi_poster.png",
+    learnMoreUrl: "/workshop-event/speaking-interviews-professional-settings",
+    internal: true,
+  },
+  {
     title: "Newtonville Village Day",
     date: "September 20, 2026",
     image: "/images/workshop-event/workshop09022026.png",
@@ -72,6 +79,9 @@ export default function WorkshopEventPage() {
                     fill
                     className="object-contain p-3"
                   />
+                  {event.internal ? (
+                    <Badge className="absolute top-3 right-3">New</Badge>
+                  ) : null}
                 </div>
                 <div className="flex flex-1 flex-col gap-2 px-5 pb-5">
                   <h3 className="font-semibold leading-snug">{event.title}</h3>
@@ -87,8 +97,8 @@ export default function WorkshopEventPage() {
                   ) : null}
                   <Link
                     href={event.learnMoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={event.internal ? undefined : "_blank"}
+                    rel={event.internal ? undefined : "noopener noreferrer"}
                     className="mt-auto flex items-center gap-1 pt-2 text-sm font-medium text-primary"
                   >
                     Learn more

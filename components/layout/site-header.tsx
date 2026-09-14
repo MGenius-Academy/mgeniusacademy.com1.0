@@ -95,7 +95,7 @@ export function SiteHeader() {
               <a href={siteConfig.trialFormUrl} target="_blank" rel="noopener noreferrer" />
             }
           >
-            Book a Free Trial
+            Book a Trial
           </Button>
           <Button
             variant="outline"
@@ -192,7 +192,7 @@ export function SiteHeader() {
                   <a href={siteConfig.trialFormUrl} target="_blank" rel="noopener noreferrer" />
                 }
               >
-                Book a Free Trial
+                Book a Trial
               </Button>
               <Button
                 variant="outline"

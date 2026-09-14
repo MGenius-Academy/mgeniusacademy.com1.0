@@ -15,7 +15,7 @@ export default function IcwProgramDetailPage() {
       backHref="/curriculum/advanced-tech-competitions"
       backLabel="Back to Advanced Tech Competitions"
       ctaTitle="Ready to Compete?"
-      ctaDescription="Book a free trial class and talk to our team about which competition track fits your child."
+      ctaDescription="Book a trial class and talk to our team about which competition track fits your child."
     />
   );
 }

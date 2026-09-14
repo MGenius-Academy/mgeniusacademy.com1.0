@@ -36,7 +36,7 @@ export default async function AiProgramDetailPage(
       backHref="/ai-programs-boston"
       backLabel="Back to AI Programs"
       ctaTitle="Ready for the Next Level?"
-      ctaDescription="Book a free trial class and talk to our team about which innovation track fits your child."
+      ctaDescription="Book a trial class and talk to our team about which innovation track fits your child."
     />
   );
 }

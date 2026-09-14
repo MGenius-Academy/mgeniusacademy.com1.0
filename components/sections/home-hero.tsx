@@ -119,7 +119,7 @@ export function HomeHero() {
                 <a href={siteConfig.trialFormUrl} target="_blank" rel="noopener noreferrer" />
               }
             >
-              Book a Free Trial Class in Boston Today
+              Book a Trial Class in Boston Today
             </Button>
             <Button
               size="lg"

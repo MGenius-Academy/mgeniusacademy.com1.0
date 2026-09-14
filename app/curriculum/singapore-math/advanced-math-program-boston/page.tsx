@@ -134,7 +134,7 @@ export default function AdvancedMathProgramPage() {
 
       <CtaBanner
         title="Give Your Child a Head Start in Math"
-        description="Book a free trial class and see MGA's Advanced Program in action."
+        description="Book a trial class and see MGA's Advanced Program in action."
       />
     </>
   );

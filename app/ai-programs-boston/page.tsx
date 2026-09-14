@@ -76,7 +76,7 @@ export default function AiProgramsPage() {
 
       <CtaBanner
         title="Ready for the Next Level?"
-        description="Book a free trial class and talk to our team about which innovation track fits your child."
+        description="Book a trial class and talk to our team about which innovation track fits your child."
       />
     </>
   );

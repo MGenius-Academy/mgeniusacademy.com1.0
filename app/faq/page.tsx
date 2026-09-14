@@ -179,7 +179,7 @@ export default function FaqPage() {
           <div className="mt-14 flex flex-col items-center gap-4 rounded-3xl bg-secondary/50 p-8 text-center">
             <h2 className="text-xl font-semibold">Still Have Questions?</h2>
             <p className="max-w-md text-sm text-muted-foreground">
-              Book a free trial class to see MGA in action, or reach out and
+              Book a trial class to see MGA in action, or reach out and
               we&apos;ll be happy to help.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
@@ -187,7 +187,7 @@ export default function FaqPage() {
                 className="bg-accent text-accent-foreground hover:bg-accent/90"
                 render={<a href={TRIAL_FORM_URL} target="_blank" rel="noopener noreferrer" />}
               >
-                Book a Free Trial
+                Book a Trial
               </Button>
               <Button
                 variant="outline"

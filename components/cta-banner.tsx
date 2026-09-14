@@ -11,9 +11,9 @@ type CtaBannerProps = {
 };
 
 export function CtaBanner({
-  title = "Book a Free Trial Class in Boston Today",
+  title = "Book a Trial Class in Boston Today",
   description = "Serving families across Newton, Waltham, Lexington, and the Greater Boston area.",
-  buttonLabel = "Book a Free Trial",
+  buttonLabel = "Book a Trial",
   href = siteConfig.trialFormUrl,
   showEnrollButton = true,
 }: CtaBannerProps) {

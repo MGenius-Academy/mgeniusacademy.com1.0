@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Contact MGenius Academy in Newton, MA. Call, email, or find us on WeChat, Instagram, and 小红书 (RedNote) — or book a free trial class.",
+    "Contact MGenius Academy in Newton, MA. Call, email, or find us on WeChat, Instagram, and 小红书 (RedNote) — or book a trial class.",
 };
 
 const cards = [
@@ -66,7 +66,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Get in Touch with MGA"
-        description="Questions about our programs, schedules, or enrollment? Reach us any of the ways below — or skip straight to booking a free trial class."
+        description="Questions about our programs, schedules, or enrollment? Reach us any of the ways below — or skip straight to booking a trial class."
       />
 
       <section className="py-16">

@@ -130,7 +130,7 @@ export default async function EngineeringLevelDetailPage(
 
       <CtaBanner
         title="Ready to Start Your Child's Engineering Journey?"
-        description="Book a free trial class and see MGA's hands-on engineering curriculum in action."
+        description="Book a trial class and see MGA's hands-on engineering curriculum in action."
       />
     </>
   );

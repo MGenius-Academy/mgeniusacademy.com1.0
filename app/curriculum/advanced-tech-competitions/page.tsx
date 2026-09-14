@@ -101,7 +101,7 @@ export default function AdvancedTechCompetitionsPage() {
 
       <CtaBanner
         title="Ready to Compete?"
-        description="Book a free trial class and talk to our team about which competition track fits your child."
+        description="Book a trial class and talk to our team about which competition track fits your child."
       />
     </>
   );
