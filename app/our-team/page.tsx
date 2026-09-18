@@ -56,6 +56,56 @@ const team = [
     title: "Instructional Specialist",
     image: "/images/our-team/jessi-1-1024x1024.jpg",
   },
+  {
+    name: "Shuxin H",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Shuxin.png",
+  },
+  {
+    name: "Daisy L",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Daisy_L.png",
+  },
+  {
+    name: "Emily A",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Emily_A.png",
+  },
+  {
+    name: "Elham S",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Elham_S.png",
+  },
+  {
+    name: "Ruby X",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Ruby_X.png",
+  },
+  {
+    name: "Andrew J",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Andrew_J.png",
+  },
+  {
+    name: "James M",
+    title: "Instructional Specialist",
+    image: "/images/our-team/James_M.png",
+  },
+  {
+    name: "Connie C",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Connie_C.png",
+  },
+  {
+    name: "Annie Z",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Annie_Z.png",
+  },
+  {
+    name: "Renzo S",
+    title: "Instructional Specialist",
+    image: "/images/our-team/Renzo_S.png",
+  },
 ];
 
 export default function OurTeamPage() {
