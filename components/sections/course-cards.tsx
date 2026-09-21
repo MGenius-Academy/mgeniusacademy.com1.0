@@ -19,7 +19,7 @@ const courses = [
     href: "/curriculum/engineering-2",
     image: "/images/home/curriculum_engineering.png",
     alt: "Engineering Course",
-    overlayTitle: "Engineering Course",
+    overlayTitle: "Engineering Courses",
     description:
       "Focuses on mechanical design, electronics, robotics, and 3D printing. Students merge hardware and software to build functional prototypes and solve complex real-world engineering challenges.",
   },
@@ -28,7 +28,7 @@ const courses = [
     href: "/curriculum/singapore-math",
     image: "/images/home/curriculum_math.png",
     alt: "Math Advancement & Competition Math Course",
-    overlayTitle: "Math",
+    overlayTitle: "Math Courses",
     description:
       "Advancement & Competition Math Course: Builds rigorous mathematical logic and problem-solving skills, with specialized coaching for top competitions including Math Kangaroo and Noetic.",
   },
