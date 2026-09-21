@@ -4,26 +4,53 @@ export const classFormat = [
   "Small group of 1–5 students",
 ];
 
-export const keyFeatures = [
+export const apKeyFeatures = [
   {
     title: "90-Minute Focused Lessons",
     description:
-      "Each class provides sufficient time for concept learning, guided practice, and problem-solving.",
+      "Each class has time for a new concept, guided practice, and independent problem-solving, with a 5-minute break.",
   },
   {
     title: "Small-Group Classroom Learning",
     description:
-      "Small class sizes allow for personalized instruction and closer teacher support.",
+      "With 1–5 students, the teacher follows each student's reasoning, corrects misunderstandings right away, and adjusts the pace. Students also learn from each other by comparing methods and explaining their thinking.",
   },
   {
     title: "Structured Learning Materials",
     description:
-      "Lessons are supported by well-designed textbooks and interactive teaching slides.",
+      "Well-designed textbooks and interactive teaching slides give every lesson a clear path from concept to practice.",
   },
   {
     title: "Competition-Level Practice",
     description:
-      "Students work with selected competition-style problems to strengthen analytical thinking.",
+      "Selected competition-style problems are part of AP lessons, so students get used to unfamiliar, multi-step questions. Students who enjoy them can continue in the Competition Program (CP).",
+    cta: {
+      text: "Competition Program (CP)",
+      href: "/curriculum/singapore-math/competition-math-program-boston",
+    },
+  },
+];
+
+export const cpKeyFeatures = [
+  {
+    title: "90-Minute Focused Lessons",
+    description:
+      "Each class has time to learn a new strategy, practice it with guidance, and apply it to competition problems, with a 5-minute break.",
+  },
+  {
+    title: "Small-Group Classroom Learning",
+    description:
+      "With 1–5 students, the teacher sees how each student approaches a problem, not only the final answer. Students present their solutions and learn from one another's methods.",
+  },
+  {
+    title: "Structured and Supplementary Materials",
+    description:
+      "Textbooks and interactive teaching slides give each level a clear sequence. Teachers add problem sets and units that MGA designs for competition topics.",
+  },
+  {
+    title: "Competition-Level Practice",
+    description:
+      "Students practice with the question styles and difficulty of Math Kangaroo, the Noetic Learning Math Contest, and, at Level 3, AMC 8, so the real contest feels familiar.",
   },
 ];
 
@@ -42,7 +69,7 @@ export const apLevels: ApLevel[] = [
     label: "AP K",
     ageGroup: "PreK-K",
     objectives:
-      "Our program aims to help students master key concepts and develop higher-order thinking skills, so as to instill an interest in math, develop their independent and critical-thinking skills, and enhance their competitiveness. By expanding the depth of their knowledge, our students learn to think independently and apply problem-solving strategies to everyday life.",
+      "Children master key early math concepts and begin using higher-order thinking. We want them to enjoy math and to start thinking independently and critically. Because problems go a step beyond counting and calculating, children learn to reason a question through on their own and apply simple strategies to everyday life, which gives them a strong, competitive start.",
     topics: [
       "Numbers to 50",
       "Addition and Subtraction",
@@ -61,7 +88,7 @@ export const apLevels: ApLevel[] = [
     label: "AP 1",
     ageGroup: "G1-2",
     objectives:
-      "Students will master the core concepts and skills taught in first-grade math ahead of their peers in school. Students will develop self-reflective learning skills and learn to apply effective problem-solving strategies to their daily exercises and schoolwork, allowing them to explore their creativity and critical-thinking skills while gaining an edge in math.",
+      "Students master the core concepts and skills of first-grade math ahead of their school peers. They learn to check and reflect on their own work and to apply problem-solving strategies to daily exercises and schoolwork. This builds creativity and critical thinking and gives them an edge in math.",
     topics: [
       "Numbers to 120",
       "Addition and Subtraction",
@@ -77,7 +104,7 @@ export const apLevels: ApLevel[] = [
     label: "AP 2",
     ageGroup: "G2-3",
     objectives:
-      "Our program is designed to help students master the core concepts and skills taught in second-grade math ahead of their peers. We aim to develop their higher-order thinking skills, so as to instill an interest in math, cultivate their logical thinking skills, and enhance their mathematical literacy and competitiveness. By expanding the depth of their knowledge, our students learn to apply problem-solving strategies to everyday life, allowing them to perform better on tests and build self-confidence.",
+      "Students master the core concepts and skills of second-grade math ahead of their peers. Higher-order thinking questions keep math interesting while building logical thinking, mathematical literacy, and competitiveness. Going deeper than the school textbook helps students apply problem-solving strategies in everyday situations, do better on tests, and grow in self-confidence.",
     topics: [
       "Numbers to 1,000",
       "Addition and Subtraction",
@@ -96,7 +123,7 @@ export const apLevels: ApLevel[] = [
     label: "AP 3",
     ageGroup: "G3-4",
     objectives:
-      "Our program is designed to help students master the core concepts and skills taught in third-grade math ahead of their peers. We aim to develop their higher-order thinking skills, so as to instill an interest in math, cultivate their logical thinking skills, and enhance their mathematical literacy and competitiveness. By expanding the depth of their knowledge, our students learn to apply problem-solving strategies to everyday life, helping them to achieve excellence in math competitions and build self-confidence.",
+      "Students master the core concepts and skills of third-grade math ahead of their peers, including multiplication, division, and fractions. Higher-order thinking questions keep math interesting while building logical thinking, mathematical literacy, and competitiveness. As word problems become multi-step, students learn to choose and apply the right strategy, which supports strong results in math competitions and builds self-confidence.",
     topics: [
       "Numbers to 10,000",
       "Addition and Subtraction",
@@ -116,12 +143,12 @@ export const apLevels: ApLevel[] = [
     label: "AP 4",
     ageGroup: "G4-5",
     objectives:
-      "Our program is designed to help students master the core concepts and skills taught in fourth-grade math in addition to unconventional word problems. We aim to develop their higher-order thinking skills, so as to instill an interest in math, cultivate their logical thinking skills, and enhance their mathematical literacy and competitiveness. Students will learn effective strategies to enhance problem-solving capabilities and learning efficiency. By expanding the depth of their knowledge, our students learn to apply problem-solving strategies to everyday life, allowing them to excel in math competitions and build self-confidence.",
+      "Students master the core concepts and skills of fourth-grade math and learn to solve unconventional, non-routine word problems. Higher-order thinking questions keep math interesting while building logical thinking, mathematical literacy, and competitiveness. Students learn strategies that make them stronger, more efficient problem-solvers, helping them excel in math competitions, apply math in everyday life, and build self-confidence.",
     topics: [
       "Number and Algebra",
       "Factors and Multiples",
       "Measurement and Geometry",
-      "4 Operations of Whole Numbers",
+      "Four Operations on Whole Numbers",
       "Angles",
       "Fractions",
       "Decimals",
@@ -135,7 +162,7 @@ export const apLevels: ApLevel[] = [
     label: "AP 5",
     ageGroup: "G5-6",
     objectives:
-      "Our program aims to improve students' self-reflective learning skills, allowing them to explore their creativity and critical-thinking skills while gaining an edge in math. Students will master problem-solving strategies in order to become better prepared for middle school and beyond.",
+      "Students strengthen self-reflective learning habits, such as checking their reasoning and learning from mistakes, while developing creativity, critical thinking, and an edge in math. Working with topics such as ratio, rate, percentage, and expressions and equations, they master the problem-solving strategies they will need in middle school and beyond.",
     topics: [
       "Expressions and Equations",
       "Word Problems Involving Whole Numbers",
@@ -171,7 +198,7 @@ export const cpLevels: CpLevel[] = [
     label: "Level 1 (G1-2)",
     tagline: "Build a Strong Foundation Early",
     description: [
-      "Level 1 is designed for young learners in Grades 1–2 who are ready to go beyond routine arithmetic and develop strong math reasoning, logic, and problem-solving skills. With Math Kangaroo and Noetic Math as key learning goals, this course helps students build a solid foundation in competition math through engaging, structured, and age-appropriate training.",
+      "Level 1 is for students in Grades 1–2 who are ready to go beyond routine arithmetic and develop strong math reasoning, logic, and problem-solving skills. With Math Kangaroo and the Noetic Learning Math Contest as key goals, the course builds a solid foundation in competition math through engaging, structured, age-appropriate training.",
     ],
     highlights: [
       {
@@ -187,17 +214,17 @@ export const cpLevels: CpLevel[] = [
       {
         title: "Strong Basics + Meaningful Enrichment",
         description:
-          "While reinforcing core school math skills, Level 1 also introduces selected advanced competition math concepts, allowing students to grow beyond grade-level limits in a structured and supportive environment.",
+          "While reinforcing core school math skills, Level 1 introduces selected advanced competition concepts, including topics not taught in school, so students grow beyond grade-level limits in a structured, supportive environment.",
       },
     ],
-    image: "/images/curriculum_singapore-math/tabs/cp-level1.jpg",
+    image: "/images/curriculum_singapore-math/tabs/cp-level1-photo.jpg",
   },
   {
     id: "level-2",
     label: "Level 2 (G3-4)",
     tagline: "Advance Math Thinking. Compete with Confidence.",
     description: [
-      "Level 2 is designed for students in Grades 3–4, a key stage when mathematical thinking begins to move from concrete understanding to more abstract reasoning. This competition math program strengthens core skills while introducing more advanced challenges that help students build deeper logic, analyze complex conditions, and solve multi-step problems with greater confidence. With targeted training for Math Kangaroo and Noetic Math, students learn to think more strategically and perform more effectively in competition settings.",
+      "Level 2 is designed for students in Grades 3–4, a key stage when mathematical thinking begins to move from concrete understanding to more abstract reasoning. This competition math program strengthens core skills while introducing more advanced challenges that help students build deeper logic, analyze complex conditions, and solve multi-step problems with greater confidence. With targeted training for Math Kangaroo and the Noetic Learning Math Contest, students learn to think more strategically and perform more effectively in competition settings.",
     ],
     highlights: [
       {
@@ -213,17 +240,17 @@ export const cpLevels: CpLevel[] = [
       {
         title: "Strong School Math Plus Advanced Competition Training",
         description:
-          "Level 2 bridges the gap between regular school math and advanced math competitions through MGA's structured curriculum, giving students the tools to tackle challenging problems with accuracy, flexibility, and speed.",
+          "Level 2 bridges regular school math and advanced competitions through MGA's structured curriculum and supplementary competition units, giving students the tools to solve challenging problems with accuracy, flexibility, and speed.",
       },
     ],
-    image: "/images/curriculum_singapore-math/tabs/cp-level2.jpg",
+    image: "/images/curriculum_singapore-math/tabs/cp-level2-photo.jpg",
   },
   {
     id: "level-3",
     label: "Level 3 (G5-6)",
     tagline: "Lead in Math Competitions. Prepare for Advanced Challenges.",
     description: [
-      "Level 3 is designed for students in Grades 5–6 who are ready to strengthen abstract reasoning, advanced problem-solving, geometry, and competition math skills. As a key bridge to middle school math success, this program helps students move beyond routine methods and develop the ability to recognize patterns, build mathematical models, and solve complex problems with logic and precision. With preparation for Math Kangaroo, Noetic Math, and early AMC 8 readiness, Level 3 supports students who are ready for more advanced competition pathways.",
+      "Level 3 is designed for students in Grades 5–6 who are ready to strengthen abstract reasoning, advanced problem-solving, geometry, and competition math skills. As a key bridge to middle school math success, this program helps students move beyond routine methods and develop the ability to recognize patterns, build mathematical models, and solve complex problems with logic and precision. With preparation for Math Kangaroo, the Noetic Learning Math Contest, and early AMC 8 readiness, Level 3 supports students who are ready for more advanced competition pathways.",
     ],
     highlights: [
       {
@@ -242,6 +269,6 @@ export const cpLevels: CpLevel[] = [
           "Level 3 uses a clear, focused curriculum with modules in logical reasoning, visual analysis, arithmetic strategy, geometry, and competition problem-solving, allowing students to strengthen each skill area step by step and build lasting confidence.",
       },
     ],
-    image: "/images/curriculum_singapore-math/tabs/cp-level3.jpg",
+    image: "/images/curriculum_singapore-math/tabs/cp-level3-photo.jpg",
   },
 ];

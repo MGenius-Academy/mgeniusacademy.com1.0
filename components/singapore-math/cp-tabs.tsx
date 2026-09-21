@@ -27,9 +27,9 @@ export function CpTabs() {
             <div className="relative aspect-3/4 overflow-hidden rounded-3xl bg-secondary/40">
               <Image
                 src={level.image}
-                alt={`${level.label} learning app screenshot`}
+                alt={`${level.label} classroom at MGA`}
                 fill
-                className="object-contain p-4"
+                className="object-cover"
               />
             </div>
             <div className="flex flex-col gap-5">

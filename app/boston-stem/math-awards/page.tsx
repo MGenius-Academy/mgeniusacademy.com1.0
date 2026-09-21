@@ -27,10 +27,10 @@ export const metadata: Metadata = {
 };
 
 const overallStats = [
-  { value: "50+", label: "2026 Math Awards" },
-  { value: "20", label: "Math Kangaroo Awards" },
-  { value: "23", label: "Noetic Spring Awards" },
-  { value: "2025–2026", label: "Award Years" },
+  { value: "43", label: "Math awards in 2026" },
+  { value: "5", label: "Math Kangaroo National #1 finishes, 2025–2026" },
+  { value: "42", label: "Math Kangaroo National Top 20 awards, 2025–2026" },
+  { value: "9", label: "MA State Top 3 awards, 2025–2026" },
 ];
 
 export default function MathAwardsPage() {
@@ -39,7 +39,7 @@ export default function MathAwardsPage() {
       <PageHero
         eyebrow="Boston STEM · Math Awards"
         title="MGA Math Competition Awards & Student Achievements"
-        description="MGA students continue to achieve outstanding results in national mathematics competitions. Through structured problem-solving training and consistent practice, our students have earned awards in Math Kangaroo USA, the Noetic Learning Math Contest, and other math competitions."
+        description="In 2026, MGA students earned 3 Math Kangaroo National #1 finishes, 16 National Top 20 awards, and 4 Massachusetts State Top 3 awards, plus 23 awards in the Noetic Learning Math Contest. In 2025, MGA students earned 2 National #1 finishes and 26 National Top 20 awards in Math Kangaroo. Students prepare through structured problem-solving training, competition-specific practice, and steady weekly work in small classes."
       />
 
       <section className="py-16">
@@ -96,6 +96,15 @@ export default function MathAwardsPage() {
             </div>
           </div>
 
+          <div className="mx-auto mt-10 max-w-4xl rounded-2xl border border-border bg-background p-6 text-center">
+            <p className="text-muted-foreground text-pretty">
+              Nine of the 16 MGA students in the 2026 Math Kangaroo National
+              Top 20 were also in the 2025 National Top 20. Olivia S moved
+              from #4 in Grade 2 to #1 in Grade 3, and Edward X moved from
+              #18 in Grade 1 to #1 in Grade 2.
+            </p>
+          </div>
+
           <div className="mx-auto mt-10 max-w-4xl">
             <Accordion multiple defaultValue={["2026"]}>
               <AccordionItem
@@ -109,7 +118,7 @@ export default function MathAwardsPage() {
                   <div className="flex flex-col gap-8 pb-2">
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                       {[
-                        { value: "3", label: "Math Kangaroo — National Top 1" },
+                        { value: "3", label: "Math Kangaroo — National #1" },
                         { value: "16", label: "Math Kangaroo — National Top 20" },
                         { value: "4", label: "MA State Top 3" },
                         { value: "23", label: "Noetic Spring Awards" },
@@ -126,11 +135,19 @@ export default function MathAwardsPage() {
                         Math Kangaroo USA 2026 — National Top 20
                       </h3>
                       <p className="mb-3 text-sm text-muted-foreground">
-                        MGA students achieved outstanding results, including 3
-                        National Top 1 awards, 16 National Top 20 awards, and
-                        4 Massachusetts State Top 3 awards.
+                        Sixteen MGA students placed in the National Top 20 for
+                        their grade, including three who ranked #1
+                        nationally. Four of them also earned Massachusetts
+                        State Top 3.
                       </p>
-                      <AwardTable rows={kangaroo2026} rankLabel="National Rank" />
+                      <AwardTable rows={kangaroo2026} rankLabel="National Rank" context="national" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
 
                     <div>
@@ -141,7 +158,14 @@ export default function MathAwardsPage() {
                         Four MGA students earned Massachusetts State Top 3
                         recognition.
                       </p>
-                      <AwardTable rows={kangaroo2026State} rankLabel="State Rank" />
+                      <AwardTable rows={kangaroo2026State} rankLabel="State Rank" context="state" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
 
                     <div>
@@ -149,11 +173,18 @@ export default function MathAwardsPage() {
                         Noetic Learning Math Contest — 2026 Spring Awards
                       </h3>
                       <p className="mb-3 text-sm text-muted-foreground">
-                        MGA students earned 3 Team Winners, 13 National Honor
-                        Roll awards, and 7 Honorable Mentions across Grade
-                        2–4 Team MGA.
+                        Twenty MGA students on the Grade 2, 3, and 4 teams
+                        earned 23 awards: 3 Team Winner awards, 13 National
+                        Honor Roll awards, and 7 Honorable Mentions. Logan X
+                        and Alex C each scored 100.
                       </p>
                       <NoeticTable rows={noetic2026} />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Team Winner goes to the top scorer on each team.
+                        National Honor Roll recognizes the top 10% of
+                        participants in each grade; Honorable Mention
+                        recognizes the top 50%.
+                      </p>
                     </div>
                   </div>
                 </AccordionContent>
@@ -172,7 +203,7 @@ export default function MathAwardsPage() {
                       {[
                         { value: "26", label: "National Top 20 Awards" },
                         { value: "5", label: "MA State Top 3 Awards" },
-                        { value: "2", label: "National Top 1 Winners" },
+                        { value: "2", label: "National #1 Finishes" },
                         { value: "G1–G5", label: "Grades Recognized" },
                       ].map((s) => (
                         <div key={s.label}>
@@ -187,10 +218,18 @@ export default function MathAwardsPage() {
                         Math Kangaroo USA 2025 — National Top 20
                       </h3>
                       <p className="mb-3 text-sm text-muted-foreground">
-                        MGA students earned 26 National Top 20 awards,
-                        including two National Rank 1 winners.
+                        Twenty-six MGA students placed in the National Top 20
+                        for their grade, including two who ranked #1
+                        nationally.
                       </p>
-                      <AwardTable rows={kangaroo2025} rankLabel="National Rank" />
+                      <AwardTable rows={kangaroo2025} rankLabel="National Rank" context="national" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
 
                     <div>
@@ -201,7 +240,14 @@ export default function MathAwardsPage() {
                         Five MGA students earned Massachusetts State Top 3
                         recognition.
                       </p>
-                      <AwardTable rows={kangaroo2025State} rankLabel="State Rank" />
+                      <AwardTable rows={kangaroo2025State} rankLabel="State Rank" context="state" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
                   </div>
                 </AccordionContent>
@@ -218,18 +264,30 @@ export default function MathAwardsPage() {
             Prepare for Future Math Competitions with MGA
           </h2>
           <p className="max-w-xl text-muted-foreground">
-            MGA&apos;s math programs help students build confidence in
-            mathematical reasoning, competition preparation, and long-term
-            problem-solving growth through structured practice and
-            small-group instruction.
+            MGA&apos;s Competition Program (CP) trains students in Grades 1–6
+            for Math Kangaroo, the Noetic Learning Math Contest, and early
+            AMC 8, using MGA&apos;s curriculum plus supplementary content
+            designed for competitions. The Advanced Program (AP) builds the
+            school-math foundation that competition work depends on. Both
+            run in groups of 1–5 students, with structured practice that
+            builds confidence and long-term problem-solving growth.
           </p>
-          <Link
-            href="/curriculum/singapore-math"
-            className="flex items-center gap-1 font-medium text-primary hover:underline"
-          >
-            Explore MGA Math Programs
-            <ArrowRightIcon className="size-4" />
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/curriculum/singapore-math/competition-math-program-boston"
+              className="flex items-center gap-1 font-medium text-primary hover:underline"
+            >
+              Explore the Competition Program
+              <ArrowRightIcon className="size-4" />
+            </Link>
+            <Link
+              href="/curriculum/singapore-math"
+              className="flex items-center gap-1 font-medium text-primary hover:underline"
+            >
+              Explore MGA Math Programs
+              <ArrowRightIcon className="size-4" />
+            </Link>
+          </div>
         </Container>
       </section>
 

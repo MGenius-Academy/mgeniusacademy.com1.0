@@ -2,19 +2,43 @@ import { MedalIcon, StarIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import type { NoeticRow, Row } from "@/lib/math-awards-data";
 
-export function TierBadge({ tier }: { tier: "gold" | "star" }) {
+export function TierBadge({
+  tier,
+  context,
+  rank,
+}: {
+  tier: "gold" | "star";
+  context: "national" | "state";
+  rank: string;
+}) {
+  if (context === "state") {
+    return (
+      <Badge className={tier === "gold" ? "gap-1 bg-amber-500 text-white" : "gap-1"} variant={tier === "gold" ? undefined : "secondary"}>
+        <MedalIcon className="size-3" /> State #{rank}
+      </Badge>
+    );
+  }
+
   return tier === "gold" ? (
     <Badge className="gap-1 bg-amber-500 text-white">
-      <MedalIcon className="size-3" /> Top 1
+      <MedalIcon className="size-3" /> National #1
     </Badge>
   ) : (
     <Badge variant="secondary" className="gap-1">
-      <StarIcon className="size-3" /> Top 20
+      <StarIcon className="size-3" /> National Top 20
     </Badge>
   );
 }
 
-export function AwardTable({ rows, rankLabel }: { rows: Row[]; rankLabel: string }) {
+export function AwardTable({
+  rows,
+  rankLabel,
+  context = "national",
+}: {
+  rows: Row[];
+  rankLabel: string;
+  context?: "national" | "state";
+}) {
   return (
     <div className="overflow-x-auto rounded-2xl border border-border">
       <table className="w-full min-w-[480px] text-sm">
@@ -34,8 +58,10 @@ export function AwardTable({ rows, rankLabel }: { rows: Row[]; rankLabel: string
               <td className="px-4 py-2.5 text-muted-foreground">{row.score}</td>
               <td className="px-4 py-2.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground">#{row.rank}</span>
-                  <TierBadge tier={row.tier} />
+                  {context === "national" ? (
+                    <span className="text-muted-foreground">#{row.rank}</span>
+                  ) : null}
+                  <TierBadge tier={row.tier} context={context} rank={row.rank} />
                 </div>
               </td>
             </tr>

@@ -64,7 +64,6 @@ export const kangaroo2025: Row[] = [
   { name: "Henry S", grade: "3", score: "86", rank: "9", tier: "star" },
   { name: "Jason X", grade: "1", score: "83", rank: "11", tier: "star" },
   { name: "Madelyn S", grade: "1", score: "83", rank: "11", tier: "star" },
-  { name: "Yuxi G", grade: "2", score: "84", rank: "11", tier: "star" },
   { name: "Max L", grade: "1", score: "82", rank: "12", tier: "star" },
   { name: "Jayden D", grade: "2", score: "83", rank: "12", tier: "star" },
   { name: "Wenhao X", grade: "2", score: "82", rank: "13", tier: "star" },

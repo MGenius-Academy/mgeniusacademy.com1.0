@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon, TrophyIcon } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
@@ -25,10 +26,10 @@ export const metadata: Metadata = {
 };
 
 const overallStats = [
-  { value: "3", label: "2026 National Top 1" },
-  { value: "16", label: "2026 National Top 20" },
-  { value: "4", label: "2026 MA State Top 3" },
-  { value: "2025–2026", label: "Award Years" },
+  { value: "5", label: "National #1 finishes, 2025–2026" },
+  { value: "42", label: "National Top 20 awards, 2025–2026" },
+  { value: "9", label: "MA State Top 3 awards, 2025–2026" },
+  { value: "9 of 16", label: "2026 Top 20 students who were also in the 2025 Top 20" },
 ];
 
 export default function MathKangarooAwardsPage() {
@@ -37,7 +38,7 @@ export default function MathKangarooAwardsPage() {
       <PageHero
         eyebrow="Boston STEM · Math Kangaroo"
         title="MGA Math Kangaroo National & State Results"
-        description="MGA students continue to achieve outstanding results in Math Kangaroo USA, earning National Top 1, National Top 20, and Massachusetts State Top 3 recognition year after year."
+        description="MGA students placed among the top Math Kangaroo USA scorers in both 2025 and 2026. In 2026, three ranked #1 nationally in their grade, 16 placed in the National Top 20, and 4 earned Massachusetts State Top 3. In 2025, two ranked #1 nationally, 26 placed in the National Top 20, and 5 earned State Top 3. Math Kangaroo is an international competition; U.S. students are ranked nationally and by state within each grade."
       />
 
       <section className="py-16">
@@ -52,6 +53,15 @@ export default function MathKangarooAwardsPage() {
                 <p className="mt-1 text-sm text-muted-foreground">{stat.label}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-12 relative aspect-21/9 overflow-hidden rounded-3xl">
+            <Image
+              src="/images/curriculum_singapore-math/math-kangaroo-hero.jpg"
+              alt="MGA students working through a Math Kangaroo–style competition problem"
+              fill
+              className="object-cover"
+            />
           </div>
         </Container>
       </section>
@@ -93,10 +103,18 @@ export default function MathKangarooAwardsPage() {
                         Math Kangaroo USA 2026 — National Top 20
                       </h3>
                       <p className="mb-3 text-sm text-muted-foreground">
-                        MGA students achieved outstanding results, including 3
-                        National Top 1 awards and 16 National Top 20 awards.
+                        Sixteen MGA students placed in the National Top 20 for
+                        their grade, including three who ranked #1
+                        nationally.
                       </p>
-                      <AwardTable rows={kangaroo2026} rankLabel="National Rank" />
+                      <AwardTable rows={kangaroo2026} rankLabel="National Rank" context="national" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
 
                     <div>
@@ -107,7 +125,14 @@ export default function MathKangarooAwardsPage() {
                         Four MGA students earned Massachusetts State Top 3
                         recognition.
                       </p>
-                      <AwardTable rows={kangaroo2026State} rankLabel="State Rank" />
+                      <AwardTable rows={kangaroo2026State} rankLabel="State Rank" context="state" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
                   </div>
                 </AccordionContent>
@@ -127,10 +152,18 @@ export default function MathKangarooAwardsPage() {
                         Math Kangaroo USA 2025 — National Top 20
                       </h3>
                       <p className="mb-3 text-sm text-muted-foreground">
-                        MGA students earned 26 National Top 20 awards,
-                        including two National Rank 1 winners.
+                        Twenty-six MGA students placed in the National Top 20
+                        for their grade, including two who ranked #1
+                        nationally.
                       </p>
-                      <AwardTable rows={kangaroo2025} rankLabel="National Rank" />
+                      <AwardTable rows={kangaroo2025} rankLabel="National Rank" context="national" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
 
                     <div>
@@ -141,7 +174,14 @@ export default function MathKangarooAwardsPage() {
                         Five MGA students earned Massachusetts State Top 3
                         recognition.
                       </p>
-                      <AwardTable rows={kangaroo2025State} rankLabel="State Rank" />
+                      <AwardTable rows={kangaroo2025State} rankLabel="State Rank" context="state" />
+                      <p className="mt-3 text-xs text-muted-foreground">
+                        Math Kangaroo ranks students within each grade. The 20
+                        highest scores in the nation make the National Winner
+                        List, and the 3 highest in each state make the State
+                        Winner List. Grades 1–4 are scored out of 96 and
+                        Grades 5–12 out of 120.
+                      </p>
                     </div>
                   </div>
                 </AccordionContent>
