@@ -32,14 +32,19 @@ const team = [
     image: "/images/our-team/tianze-1024x1024.webp",
   },
   {
-    name: "Grace H",
-    title: "Instructional Specialist",
-    image: "/images/our-team/grace-1-1024x1024.jpg",
+    name: "Ruby X",
+    title: "Director of Math Programs",
+    image: "/images/our-team/Ruby_X.png",
   },
   {
     name: "Ying W",
-    title: "Director of Math Programs",
+    title: "Lead Math Instuctional Specialist",
     image: "/images/our-team/wangying-1024x1024.webp",
+  },
+  {
+    name: "Grace H",
+    title: "Center Manager",
+    image: "/images/our-team/grace-1-1024x1024.jpg",
   },
   {
     name: "Sharon C",
@@ -59,27 +64,22 @@ const team = [
   {
     name: "Shuxin H",
     title: "Instructional Specialist",
-    image: "/images/our-team/Shuxin.png",
+    image: "/images/our-team/Shuxin2.png",
   },
   {
     name: "Daisy L",
     title: "Instructional Specialist",
-    image: "/images/our-team/Daisy_L.png",
+    image: "/images/our-team/Daisy_L2.png",
   },
   {
     name: "Emily A",
     title: "Instructional Specialist",
-    image: "/images/our-team/Emily_A.png",
+    image: "/images/our-team/Emily_A2.png",
   },
   {
     name: "Elham S",
     title: "Instructional Specialist",
     image: "/images/our-team/Elham_S.png",
-  },
-  {
-    name: "Ruby X",
-    title: "Instructional Specialist",
-    image: "/images/our-team/Ruby_X.png",
   },
   {
     name: "Andrew J",
@@ -99,14 +99,27 @@ const team = [
   {
     name: "Annie Z",
     title: "Instructional Specialist",
-    image: "/images/our-team/Annie_Z.png",
+    image: "/images/our-team/Annie_Z2.png",
   },
   {
     name: "Renzo S",
     title: "Instructional Specialist",
-    image: "/images/our-team/Renzo_S.png",
+    image: "/images/our-team/Renzo_S2.png",
   },
 ];
+
+const rowSizes = [3, 3, 2, 3, 3, 3, 2];
+
+const rows: ((typeof team)[number] | null)[][] = [];
+let cursor = 0;
+for (const size of rowSizes) {
+  const row: ((typeof team)[number] | null)[] = team.slice(cursor, cursor + size);
+  cursor += size;
+  while (row.length < 3) {
+    row.push(null);
+  }
+  rows.push(row);
+}
 
 export default function OurTeamPage() {
   return (
@@ -120,33 +133,48 @@ export default function OurTeamPage() {
       <section className="py-16">
         <Container>
           <div className="flex flex-col gap-y-12">
-            {Array.from({ length: Math.ceil(team.length / 3) }, (_, rowIndex) =>
-              team.slice(rowIndex * 3, rowIndex * 3 + 3),
-            ).map((row, rowIndex) => (
+            {rows.map((row, rowIndex) => (
               <div
                 key={rowIndex}
                 className="flex flex-col divide-y divide-border sm:flex-row sm:justify-center sm:divide-x sm:divide-y-0"
               >
-                {row.map((member) => (
-                  <div
-                    key={member.name}
-                    className="flex flex-col items-center px-8 py-8 text-center first:pt-0 last:pb-0 sm:w-1/3 sm:py-0"
-                  >
-                    <div className="relative size-40 shrink-0 overflow-hidden rounded-full sm:size-44">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                        sizes="176px"
+                {row.map((member, index) => {
+                  if (!member) {
+                    return (
+                      <div
+                        key={`placeholder-${rowIndex}-${index}`}
+                        aria-hidden="true"
+                        className="hidden sm:invisible sm:block sm:w-1/3"
                       />
+                    );
+                  }
+
+                  const isFirst = index === 0;
+                  const isLast = index === row.filter(Boolean).length - 1;
+
+                  return (
+                    <div
+                      key={member.name}
+                      className={`flex flex-col items-center px-8 py-8 text-center sm:w-1/3 sm:py-0 ${
+                        isFirst ? "pt-0" : ""
+                      } ${isLast ? "pb-0" : ""}`}
+                    >
+                      <div className="relative size-40 shrink-0 overflow-hidden rounded-full sm:size-44">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover"
+                          sizes="176px"
+                        />
+                      </div>
+                      <h3 className="mt-4 text-lg font-semibold text-balance">{member.name}</h3>
+                      <p className="mt-1 text-sm font-semibold text-accent text-balance">
+                        {member.title}
+                      </p>
                     </div>
-                    <h3 className="mt-4 text-lg font-semibold text-balance">{member.name}</h3>
-                    <p className="mt-1 text-sm font-semibold text-accent text-balance">
-                      {member.title}
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             ))}
           </div>

@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "MGA",
   tagline: "Maker · Solver · Creator",
   description:
-    "MGenius Academy (MGA) is a STEM education academy in Newton/Boston serving K-8 students with hands-on programs in robotics, coding, engineering, AI, and competitive math.",
+    "MGenius Academy (MGA) is a STEM education academy in Newton/Boston serving K-12 students with hands-on programs in robotics, coding, engineering, AI, and competitive math.",
   url: "https://mgeniusacademy.com",
   address: {
     line1: "Suite 300, 288 Walnut St",

@@ -22,7 +22,7 @@ export default function StemSummerCampsBostonPage() {
       <PageHero
         eyebrow="Week Camps"
         title="STEM Summer Camps in Boston"
-        description="MGA's 2026 camp lineup for K-8 students in Newton, MA and the Greater Boston area — hands-on AI, robotics, engineering, coding, chemistry, and invention-based projects. Students build real projects while developing creativity, problem-solving skills, and confidence."
+        description="MGA's 2026 camp lineup for K-12 students in Newton, MA and the Greater Boston area — hands-on AI, robotics, engineering, coding, chemistry, and invention-based projects. Students build real projects while developing creativity, problem-solving skills, and confidence."
       />
 
       <section className="py-16">
