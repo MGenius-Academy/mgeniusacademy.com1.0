@@ -26,6 +26,11 @@ const corePrograms = [
 
 const heroImages = [
   {
+    src: "/images/home/banner-trial-class-2026.jpg",
+    alt: "MGA Special Trial Class — one 90-minute class for just $19",
+    href: "/steam-events/mga-special-trial-class-19",
+  },
+  {
     src: "/images/home/banner-12.jpg",
     alt: "MGA students building a project together",
     href: "/student-project",
