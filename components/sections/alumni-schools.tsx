@@ -1,16 +1,7 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Container } from "@/components/container";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-  type CarouselApi,
-} from "@/components/ui/carousel";
+import { Reveal } from "@/components/home/reveal";
+import { sectionTitle } from "@/components/home/styles";
 
 const publicSchools = [
   "8.png",
@@ -51,46 +42,45 @@ const privateSchools = [
   "2-1.png",
 ];
 
-function LogoCarousel({ files, label }: { files: string[]; label: string }) {
-  const [api, setApi] = useState<CarouselApi>();
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (!api || isPaused) return;
-    const id = setInterval(() => api.scrollNext(), 2500);
-    return () => clearInterval(id);
-  }, [api, isPaused]);
-
+// Two rows of one marquee device: the track holds the list twice and slides by
+// half its width, so the loop is seamless. Pauses on hover; under reduced motion
+// it stops and becomes a scrollable row instead.
+function LogoRow({
+  files,
+  label,
+  reverse = false,
+}: {
+  files: string[];
+  label: string;
+  reverse?: boolean;
+}) {
   return (
-    <div>
-      <p className="mb-4 text-center text-sm font-semibold text-muted-foreground">{label}</p>
-      <div
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-        onFocus={() => setIsPaused(true)}
-        onBlur={() => setIsPaused(false)}
-      >
-        <Carousel opts={{ loop: true, align: "start" }} setApi={setApi} className="px-11">
-          <CarouselContent className="-ml-[5px]">
-            {files.map((file) => (
-              <CarouselItem
-                key={file}
-                className="basis-1/2 pl-[5px] sm:basis-1/3 lg:basis-1/6"
-              >
-                <div className="relative mx-auto flex size-32 items-center justify-center rounded-xl border border-border bg-background p-2 sm:size-40">
-                  <Image
-                    src={`/images/home/${file}`}
-                    alt=""
-                    fill
-                    className="object-contain p-2"
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious size="icon" className="left-0" aria-label={`Previous ${label} logos`} />
-          <CarouselNext size="icon" className="right-0" aria-label={`Next ${label} logos`} />
-        </Carousel>
+    <div className="grid gap-4 lg:grid-cols-12 lg:items-center lg:gap-8">
+      <p className="text-sm font-bold text-[#0F172A] lg:col-span-2">{label}</p>
+      <div className="group relative overflow-hidden motion-reduce:overflow-x-auto lg:col-span-10 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+        <ul
+          className={`flex w-max gap-3 group-hover:[animation-play-state:paused] motion-reduce:animate-none ${
+            reverse
+              ? "animate-[mga-marquee_60s_linear_infinite_reverse]"
+              : "animate-[mga-marquee_60s_linear_infinite]"
+          }`}
+        >
+          {[...files, ...files].map((file, index) => (
+            <li
+              key={`${file}-${index}`}
+              aria-hidden={index >= files.length ? true : undefined}
+              className="relative size-24 shrink-0 rounded-[16px] border border-slate-200/80 bg-white sm:size-28"
+            >
+              <Image
+                src={`/images/home/${file}`}
+                alt=""
+                fill
+                sizes="112px"
+                className="object-contain p-3"
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
@@ -98,17 +88,16 @@ function LogoCarousel({ files, label }: { files: string[]; label: string }) {
 
 export function AlumniSchools() {
   return (
-    <section className="py-16">
+    <section id="alumni" className="scroll-mt-24 py-16 lg:py-24">
+      <style>{`@keyframes mga-marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 0.375rem))}}`}</style>
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Where MGA Alumni Are Studying
-          </h2>
-        </div>
-        <div className="mt-10 flex flex-col gap-10">
-          <LogoCarousel files={publicSchools} label="Public School" />
-          <LogoCarousel files={privateSchools} label="Private School" />
-        </div>
+        <Reveal>
+          <h2 className={`max-w-xl ${sectionTitle}`}>Where MGA Alumni Are Studying</h2>
+        </Reveal>
+        <Reveal delay={0.08} className="mt-10 flex flex-col gap-6 lg:mt-12">
+          <LogoRow files={publicSchools} label="Public School" />
+          <LogoRow files={privateSchools} label="Private School" reverse />
+        </Reveal>
       </Container>
     </section>
   );

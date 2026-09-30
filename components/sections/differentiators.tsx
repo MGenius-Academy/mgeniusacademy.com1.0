@@ -1,5 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { PlusIcon } from "lucide-react";
 import { Container } from "@/components/container";
+import { Reveal } from "@/components/home/reveal";
+import { dotGrid, sectionTitle } from "@/components/home/styles";
 
 const items = [
   {
@@ -41,24 +48,103 @@ const items = [
 ];
 
 export function Differentiators() {
+  const [active, setActive] = useState(0);
+  const reduce = useReducedMotion();
+  const current = items[active];
+
   return (
-    <section className="py-16">
-      <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            What Makes MGA Different?
-          </h2>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
-            <div key={item.title} className="flex flex-col gap-3">
-              <div className="relative aspect-video overflow-hidden rounded-2xl">
-                <Image src={item.image} alt="" fill className="object-cover" />
+    <section className="relative overflow-hidden py-16 lg:py-24">
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 top-0 h-72 ${dotGrid} [mask-image:linear-gradient(to_bottom,black,transparent)]`}
+      />
+
+      <Container className="relative">
+        <Reveal>
+          <h2 className={`max-w-xl ${sectionTitle}`}>What Makes MGA Different?</h2>
+        </Reveal>
+
+        <div className="mt-10 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:gap-12">
+          {/* Image panel: first on mobile, sticky on the right at desktop */}
+          <Reveal className="lg:order-2 lg:col-span-7">
+            <div className="lg:sticky lg:top-24">
+              <div className="relative aspect-16/10 overflow-hidden rounded-[16px] border border-slate-200/80 bg-slate-100">
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.div
+                    key={current.image}
+                    className="absolute inset-0"
+                    initial={reduce ? false : { opacity: 0, scale: 1.03 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={reduce ? undefined : { opacity: 0 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Image
+                      src={current.image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 640px, 100vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
+                </AnimatePresence>
               </div>
-              <h3 className="font-semibold text-balance">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
             </div>
-          ))}
+          </Reveal>
+
+          <Reveal delay={0.08} className="lg:order-1 lg:col-span-5">
+            <ul className="border-t border-slate-200/80">
+              {items.map((item, index) => {
+                const isActive = index === active;
+                return (
+                  <li key={item.title} className="border-b border-slate-200/80">
+                    <button
+                      type="button"
+                      aria-expanded={isActive}
+                      onClick={() => setActive(index)}
+                      className="group flex w-full items-start gap-4 py-5 text-left"
+                    >
+                      <span
+                        className={`mt-1 w-5 shrink-0 text-xs font-bold tabular-nums transition-colors ${
+                          isActive ? "text-[#E86A3E]" : "text-slate-400"
+                        }`}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={`flex-1 text-lg font-bold tracking-tight text-balance transition-colors ${
+                          isActive ? "text-[#1A43BF]" : "text-[#0F172A] group-hover:text-[#1A43BF]"
+                        }`}
+                      >
+                        {item.title}
+                      </span>
+                      <PlusIcon
+                        aria-hidden="true"
+                        className={`mt-1 size-4 shrink-0 transition-transform duration-300 ${
+                          isActive ? "rotate-45 text-[#1A43BF]" : "text-slate-400"
+                        }`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isActive ? (
+                        <motion.div
+                          key="body"
+                          initial={reduce ? false : { height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={reduce ? undefined : { height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <p className="pb-6 pl-9 text-[15px] leading-relaxed text-slate-600">
+                            {item.description}
+                          </p>
+                        </motion.div>
+                      ) : null}
+                    </AnimatePresence>
+                  </li>
+                );
+              })}
+            </ul>
+          </Reveal>
         </div>
       </Container>
     </section>

@@ -1,5 +1,8 @@
 import Image from "next/image";
+import { ArrowUpRightIcon } from "lucide-react";
 import { Container } from "@/components/container";
+import { Reveal } from "@/components/home/reveal";
+import { sectionTitle } from "@/components/home/styles";
 
 const partners = [
   {
@@ -27,33 +30,51 @@ const partners = [
 
 export function PartnersSection() {
   return (
-    <section className="bg-secondary/40 py-16">
-      <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Partnerships</h2>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
-          {partners.map((partner) => (
-            <div
-              key={partner.name}
-              className="flex flex-col items-center gap-3 rounded-3xl border border-border bg-background p-6 text-center"
-            >
-              <div className="relative size-16">
-                <Image src={partner.logo} alt={`${partner.name} logo`} fill className="object-contain" />
-              </div>
-              <h3 className="font-semibold">{partner.name}</h3>
-              <p className="text-sm text-muted-foreground">{partner.description}</p>
-              <a
-                href={partner.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto text-sm font-medium text-primary hover:underline"
-              >
-                Learn More &raquo;
-              </a>
-            </div>
-          ))}
-        </div>
+    <section className="border-t border-slate-200/80 bg-white py-16 lg:py-24">
+      <Container className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <Reveal className="lg:col-span-4">
+          <h2 className={sectionTitle}>Partnerships</h2>
+        </Reveal>
+
+        <Reveal delay={0.08} className="lg:col-span-8">
+          <ul className="divide-y divide-slate-200/80 border-y border-slate-200/80">
+            {partners.map((partner) => (
+              <li key={partner.name}>
+                <a
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group grid grid-cols-[4rem_1fr] items-start gap-5 py-7 sm:grid-cols-[5rem_1fr_auto] sm:gap-7"
+                >
+                  <span className="relative size-16 overflow-hidden rounded-[16px] border border-slate-200/80 bg-white sm:size-20">
+                    <Image
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      fill
+                      sizes="80px"
+                      className="object-contain p-2"
+                    />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-lg font-bold tracking-tight text-[#0F172A] transition-colors group-hover:text-[#1A43BF]">
+                      {partner.name}
+                    </span>
+                    <span className="mt-2 block max-w-[60ch] text-[15px] leading-relaxed text-slate-600">
+                      {partner.description}
+                    </span>
+                    <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#1A43BF] sm:hidden">
+                      Learn More &raquo;
+                    </span>
+                  </span>
+                  <span className="hidden items-center gap-1.5 self-center rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-[#0F172A] transition-colors duration-200 group-hover:border-[#1A43BF] group-hover:text-[#1A43BF] sm:inline-flex">
+                    Learn More
+                    <ArrowUpRightIcon className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </Container>
     </section>
   );

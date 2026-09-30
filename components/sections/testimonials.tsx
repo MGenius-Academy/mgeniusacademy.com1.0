@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, QuoteIcon, StarIcon } from "lucide-react";
 import { Container } from "@/components/container";
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { Reveal } from "@/components/home/reveal";
+import { sectionTitle } from "@/components/home/styles";
 
 const reviews = [
   {
@@ -80,26 +81,6 @@ const reviews = [
 ];
 
 export function Testimonials() {
-  return (
-    <section className="bg-secondary/40 py-16">
-      <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Why Parents Love MGA
-          </h2>
-          <p className="mt-3 text-muted-foreground">
-            Parents in Boston trust MGA for high-quality STEM and math
-            education that prepares students for future success.
-          </p>
-        </div>
-
-        <TestimonialsCarousel />
-      </Container>
-    </section>
-  );
-}
-
-function TestimonialsCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -107,8 +88,10 @@ function TestimonialsCarousel() {
 
   useEffect(() => {
     if (!api) return;
-    setScrollSnaps(api.scrollSnapList());
-    const onSelect = () => setSelectedIndex(api.selectedScrollSnap());
+    const onSelect = () => {
+      setScrollSnaps(api.scrollSnapList());
+      setSelectedIndex(api.selectedScrollSnap());
+    };
     onSelect();
     api.on("select", onSelect);
     api.on("reInit", onSelect);
@@ -124,82 +107,124 @@ function TestimonialsCarousel() {
     return () => clearInterval(id);
   }, [api, isPaused]);
 
+  const navButton =
+    "flex size-11 items-center justify-center rounded-full border border-slate-300 bg-white text-[#0F172A] transition-colors duration-200 hover:border-[#1A43BF] hover:text-[#1A43BF] active:translate-y-px";
+
   return (
-    <div
-      className="mt-10"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onFocus={() => setIsPaused(true)}
-      onBlur={() => setIsPaused(false)}
-    >
-      <Carousel opts={{ loop: true, align: "start" }} setApi={setApi} className="px-1">
-        <CarouselContent>
-          {reviews.map((review) => (
-            <CarouselItem key={review.name} className="sm:basis-1/2 lg:basis-1/3">
-              <figure className="flex h-full flex-col gap-3 rounded-3xl border border-border bg-background p-6 shadow-sm">
-                <div
-                  className="flex gap-0.5 text-accent"
-                  role="img"
-                  aria-label="5 out of 5 stars"
-                >
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <StarIcon key={index} className="size-4 fill-current" aria-hidden="true" />
-                  ))}
-                </div>
-                <blockquote className="line-clamp-6 text-sm text-muted-foreground">
-                  &ldquo;{review.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-auto pt-2 text-sm font-semibold">
-                  {review.name}
-                </figcaption>
-              </figure>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+    <section className="border-y border-slate-200/80 bg-white py-16 lg:py-24">
+      <Container
+        className="grid gap-10 lg:grid-cols-12 lg:gap-12"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onFocus={() => setIsPaused(true)}
+        onBlur={() => setIsPaused(false)}
+      >
+        <Reveal className="lg:col-span-4">
+          <div className="lg:sticky lg:top-24">
+            <h2 className={sectionTitle}>Why Parents Love MGA</h2>
+            <p className="mt-4 max-w-[42ch] leading-relaxed text-slate-600">
+              Parents in Boston trust MGA for high-quality STEM and math
+              education that prepares students for future success.
+            </p>
 
-      <div className="mt-6 flex items-center justify-center gap-4">
-        <Button
-          type="button"
-          variant="outline"
-          size="icon-sm"
-          className="rounded-full"
-          aria-label="Previous review"
-          onClick={() => api?.scrollPrev()}
-        >
-          <ChevronLeftIcon />
-        </Button>
+            <div className="mt-8 flex items-center gap-3">
+              <button
+                type="button"
+                className={navButton}
+                aria-label="Previous review"
+                onClick={() => api?.scrollPrev()}
+              >
+                <ChevronLeftIcon className="size-4" />
+              </button>
+              <button
+                type="button"
+                className={navButton}
+                aria-label="Next review"
+                onClick={() => api?.scrollNext()}
+              >
+                <ChevronRightIcon className="size-4" />
+              </button>
+              <span className="ml-2 text-sm font-semibold text-slate-500 tabular-nums">
+                {selectedIndex + 1} / {scrollSnaps.length || reviews.length}
+              </span>
+            </div>
+          </div>
+        </Reveal>
 
-        <div className="hidden items-center gap-2 sm:flex">
-          {scrollSnaps.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              aria-label={`Go to review ${index + 1}`}
-              aria-current={index === selectedIndex}
-              onClick={() => api?.scrollTo(index)}
-              className="flex size-6 items-center justify-center"
-            >
-              <span
-                className={`block size-2 rounded-full transition-all ${
-                  index === selectedIndex ? "w-5 bg-primary" : "bg-primary/30"
-                }`}
-              />
-            </button>
+        <Reveal delay={0.08} className="min-w-0 lg:col-span-8">
+          <Carousel opts={{ loop: true, align: "start" }} setApi={setApi}>
+            <CarouselContent>
+              {reviews.map((review) => (
+                <CarouselItem key={review.name} className="sm:basis-1/2">
+                  <ReviewCard name={review.name} quote={review.quote} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          <div className="mt-6 hidden items-center gap-1 sm:flex">
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Go to review ${index + 1}`}
+                aria-current={index === selectedIndex}
+                onClick={() => api?.scrollTo(index)}
+                className="flex h-6 items-center px-0.5"
+              >
+                <span
+                  className={`block h-1 rounded-full transition-all duration-300 ${
+                    index === selectedIndex ? "w-6 bg-[#1A43BF]" : "w-3 bg-[#0F172A]/15"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+        </Reveal>
+      </Container>
+    </section>
+  );
+}
+
+function ReviewCard({ name, quote }: { name: string; quote: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = quote.length > 280;
+
+  return (
+    <figure className="flex h-full flex-col rounded-[16px] border border-slate-200/80 bg-[#F8FAFC] p-6 lg:p-7">
+      <div className="flex items-center justify-between">
+        <QuoteIcon aria-hidden="true" className="size-7 fill-[#1A43BF] text-[#1A43BF]" />
+        <div className="flex gap-0.5 text-[#E86A3E]" role="img" aria-label="5 out of 5 stars">
+          {Array.from({ length: 5 }).map((_, index) => (
+            <StarIcon key={index} className="size-3.5 fill-current" aria-hidden="true" />
           ))}
         </div>
-
-        <Button
-          type="button"
-          variant="outline"
-          size="icon-sm"
-          className="rounded-full"
-          aria-label="Next review"
-          onClick={() => api?.scrollNext()}
-        >
-          <ChevronRightIcon />
-        </Button>
       </div>
-    </div>
+      <blockquote
+        className={`mt-5 text-[15px] leading-relaxed text-[#0F172A]/80 ${expanded ? "" : "line-clamp-6"}`}
+      >
+        &ldquo;{quote}&rdquo;
+      </blockquote>
+      {isLong ? (
+        <button
+          type="button"
+          onClick={() => setExpanded((value) => !value)}
+          aria-expanded={expanded}
+          className="mt-3 w-fit text-sm font-semibold text-[#1A43BF] hover:underline"
+        >
+          {expanded ? "Show less" : "Read full review"}
+        </button>
+      ) : null}
+      <div aria-hidden="true" className="min-h-6 flex-1" />
+      <figcaption className="flex items-center gap-3 border-t border-slate-200/80 pt-5">
+        <span
+          aria-hidden="true"
+          className="flex size-10 items-center justify-center rounded-full bg-[#1A43BF] text-sm font-bold text-white"
+        >
+          {name.charAt(0)}
+        </span>
+        <span className="text-sm font-bold text-[#0F172A]">{name}</span>
+      </figcaption>
+    </figure>
   );
 }

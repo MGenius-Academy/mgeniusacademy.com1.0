@@ -3,26 +3,17 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowRightIcon, ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Container } from "@/components/container";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { btnOutline, btnPrimary, dotGrid } from "@/components/home/styles";
 import { siteConfig } from "@/lib/site-config";
-
-const corePrograms = [
-  "Young CEO & CTO: AI-Powered Tech Entrepreneurship Program",
-  "Engineering Course",
-  "Math Advancement & Competition Course",
-  "Hands-on Camps & Workshops",
-  "Advanced Tech Competitions & Applied Innovation",
-  "Competition Hosting",
-];
 
 const heroImages = [
   {
@@ -62,86 +53,94 @@ const heroImages = [
   },
 ];
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export function HomeHero() {
+  const reduce = useReducedMotion();
+  const enter = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.8, delay, ease },
+        };
+
   return (
-    <section className="overflow-hidden bg-secondary/40">
-      <Container className="grid items-center gap-10 py-14 lg:grid-cols-2 lg:py-20">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+    <section className="relative overflow-hidden border-b border-slate-200/80">
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block ${dotGrid} [mask-image:linear-gradient(to_left,black,transparent)]`}
+      />
+
+      <Container className="relative grid grid-cols-1 items-center gap-12 py-14 lg:grid-cols-12 lg:gap-10 lg:py-20">
+        <div className="min-w-0 lg:col-span-6">
+          <motion.p
+            {...enter(0)}
+            className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[#1A43BF]"
+          >
+            <span aria-hidden="true" className="h-[3px] w-8 rounded-full bg-[#E86A3E]" />
             STEM · Math · AI · Engineering — Boston
-          </p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight text-balance sm:text-5xl">
-            Hands-on learning for K&ndash;G12 students in Boston
-          </h1>
+          </motion.p>
 
-          <p className="mt-5 text-base font-semibold text-foreground">
-            MGA (MGenius Academy)
-          </p>
-          <p className="mt-1 text-lg text-muted-foreground text-pretty">
-            MGA is a leading STEM and Innovation academy in the Boston area.
-            Empowering K&ndash;G12 students with hands-on STEM education,
-            cutting-edge technology, and small-group project-based learning to
-            build the next generation of innovators.
-          </p>
+          <motion.h1
+            {...enter(0.08)}
+            className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-[-0.035em] text-balance text-[#0F172A] sm:text-5xl lg:text-[3.6rem]"
+          >
+            Hands-on learning for K&ndash;G12 students{" "}
+            <span className="text-[#1A43BF]">in Boston</span>
+          </motion.h1>
 
-          <div className="mt-6">
-            <p className="text-sm font-semibold uppercase tracking-wide text-foreground">
-              Core Programs &amp; Tracks
-            </p>
-            <ul className="mt-3 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
-              {corePrograms.map((program) => (
-                <li key={program} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <svg
-                    className="mt-0.5 size-4 shrink-0 text-accent"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M16.667 5L7.5 14.167 3.333 10"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <span>{program}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <motion.p
+            {...enter(0.16)}
+            className="mt-6 max-w-[56ch] text-lg leading-relaxed text-slate-600 text-pretty"
+          >
+            <strong className="font-semibold text-[#0F172A]">MGA (MGenius Academy)</strong> is a
+            leading STEM and Innovation academy in the Boston area. Empowering K&ndash;G12
+            students with hands-on STEM education, cutting-edge technology, and small-group
+            project-based learning to build the next generation of innovators.
+          </motion.p>
 
-          <p className="mt-6 text-sm text-muted-foreground">
-            Serving families in the Greater Boston area, including Newton,
-            Wellesley, Needham, Belmont, Waltham, Lexington, and surrounding
-            communities.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Button
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90"
-              render={
-                <a href={siteConfig.trialFormUrl} target="_blank" rel="noopener noreferrer" />
-              }
+          <motion.div {...enter(0.24)} className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href={siteConfig.trialFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={btnPrimary}
             >
               Book a Trial Class in Boston Today
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              render={
-                <a href={siteConfig.enrollUrl} target="_blank" rel="noopener noreferrer" />
-              }
+              <ArrowUpRightIcon className="size-4" />
+            </a>
+            <a
+              href={siteConfig.enrollUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={btnOutline}
             >
               Enroll Now
-            </Button>
-            <Button size="lg" variant="outline" render={<Link href="/curriculum" />}>
+            </a>
+            <Link
+              href="/curriculum"
+              className="group inline-flex h-12 items-center gap-1.5 text-[15px] font-semibold text-[#1A43BF]"
+            >
               Explore STEM Courses
-            </Button>
-          </div>
+              <ArrowRightIcon className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
         </div>
 
-        <HeroCarousel />
+        <motion.div
+          className="min-w-0 lg:col-span-6"
+          {...(reduce
+            ? {}
+            : {
+                initial: { opacity: 0, x: 32 },
+                animate: { opacity: 1, x: 0 },
+                transition: { duration: 0.9, delay: 0.2, ease },
+              })}
+        >
+          <HeroCarousel />
+        </motion.div>
       </Container>
     </section>
   );
@@ -168,6 +167,8 @@ function HeroCarousel() {
     return () => clearInterval(id);
   }, [api, isPaused]);
 
+  const current = heroImages[selectedIndex];
+
   return (
     <div
       onMouseEnter={() => setIsPaused(true)}
@@ -175,35 +176,69 @@ function HeroCarousel() {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
-        <CarouselContent>
-          {heroImages.map((image, index) => (
-            <CarouselItem key={image.src}>
-              <div className="relative aspect-4/3 overflow-hidden rounded-3xl shadow-lg">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover"
-                  priority={index === 0}
-                />
-                {image.href ? (
-                  <Button
-                    className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-black/60 text-white backdrop-blur-sm hover:bg-black/75"
-                    render={<Link href={image.href} />}
-                  >
-                    Click to Explore
-                  </Button>
-                ) : null}
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious size="icon" className="left-3" />
-        <CarouselNext size="icon" className="right-3" />
-      </Carousel>
+      <div className="relative">
+        {/* Offset blueprint plate behind the photo frame */}
+        <div
+          aria-hidden="true"
+          className="absolute -right-3 -bottom-3 left-6 top-6 rounded-[20px] bg-[#1A43BF] sm:-right-5 sm:-bottom-5"
+        />
 
-      <div className="mt-2 flex items-center justify-center">
+        <div className="relative rounded-[20px] border border-slate-200/80 bg-white p-2 shadow-[0_24px_60px_-28px_rgba(26,67,191,0.45)]">
+          <Carousel opts={{ loop: true }} setApi={setApi} className="w-full">
+            <CarouselContent>
+              {heroImages.map((image, index) => (
+                <CarouselItem key={image.src}>
+                  <div className="relative aspect-4/3 overflow-hidden rounded-[14px] bg-slate-100">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(min-width: 1024px) 560px, 100vw"
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                    {image.href ? (
+                      <Link
+                        href={image.href}
+                        className="group absolute bottom-4 left-4 inline-flex h-10 items-center gap-1.5 rounded-full bg-white/95 px-4 text-sm font-semibold text-[#0F172A] shadow-sm backdrop-blur-sm transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-px"
+                      >
+                        Click to Explore
+                        <ArrowRightIcon className="size-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                      </Link>
+                    ) : null}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          <div className="flex items-center gap-4 px-2 pt-3 pb-1">
+            <p className="min-w-0 flex-1 truncate text-sm text-slate-600" aria-live="polite">
+              {current?.alt}
+            </p>
+            <div className="flex shrink-0 items-center gap-1.5">
+              <button
+                type="button"
+                aria-label="Previous slide"
+                onClick={() => api?.scrollPrev()}
+                className="flex size-9 items-center justify-center rounded-full border border-slate-200 text-[#0F172A] transition-colors hover:border-[#1A43BF] hover:text-[#1A43BF] active:translate-y-px"
+              >
+                <ChevronLeftIcon className="size-4" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next slide"
+                onClick={() => api?.scrollNext()}
+                className="flex size-9 items-center justify-center rounded-full border border-slate-200 text-[#0F172A] transition-colors hover:border-[#1A43BF] hover:text-[#1A43BF] active:translate-y-px"
+              >
+                <ChevronRightIcon className="size-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-8 flex items-center justify-center gap-1">
         {heroImages.map((image, index) => (
           <button
             key={image.src}
@@ -211,11 +246,11 @@ function HeroCarousel() {
             aria-label={`Go to slide ${index + 1}`}
             aria-current={index === selectedIndex}
             onClick={() => api?.scrollTo(index)}
-            className="flex size-9 items-center justify-center"
+            className="flex h-8 items-center px-1"
           >
             <span
-              className={`block h-2.5 rounded-full transition-all ${
-                index === selectedIndex ? "w-6 bg-primary" : "w-2.5 bg-primary/30"
+              className={`block h-1 rounded-full transition-all duration-300 ${
+                index === selectedIndex ? "w-8 bg-[#0F172A]" : "w-4 bg-[#0F172A]/20"
               }`}
             />
           </button>
