@@ -1,4 +1,5 @@
 export const newsSlugs = [
+  "halloween-parent-child-trial-class-light-up-a-haunted-house",
   "mga-special-trial-class-19",
   "mgenius-academy-shines-at-wecan-picnic",
   "mga-summer-camp-ai-humanoid-robot-camp",
