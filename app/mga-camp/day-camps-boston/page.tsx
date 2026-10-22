@@ -17,6 +17,12 @@ import {
   GraduationCapIcon,
   UtensilsIcon,
   SparklesIcon,
+  StarIcon,
+  BotIcon,
+  DropletIcon,
+  PackageOpenIcon,
+  HammerIcon,
+  InfoIcon,
 } from "lucide-react";
 import { Container } from "@/components/container";
 import { cn } from "@/lib/utils";
@@ -86,6 +92,47 @@ const OVERVIEW_DETAILS = [
     label: "Register / Questions",
     value: "info@mgeniusacademy.com",
     href: "mailto:info@mgeniusacademy.com",
+  },
+] as const;
+
+const NOVEMBER_CAMPS = [
+  {
+    weekday: "Tuesday",
+    date: "Nov 3",
+    occasion: "Newton Election Day",
+    headerClass: "bg-[#F6B93B] text-[#1B2559]",
+    projectBg: "bg-[#4F8EF7]/10",
+    projects: [
+      {
+        icon: StarIcon,
+        name: "Lasermaker Fridge Magnets",
+        description: "Design it, then laser-cut it!",
+      },
+      {
+        icon: BotIcon,
+        name: "Cardboard Robots",
+        description: "Build and decorate your own bot.",
+      },
+    ],
+  },
+  {
+    weekday: "Wednesday",
+    date: "Nov 11",
+    occasion: "Veterans Day",
+    headerClass: "bg-[#0F7A5C] text-white",
+    projectBg: "bg-[#2DBE93]/10",
+    projects: [
+      {
+        icon: DropletIcon,
+        name: "Hydrocritter",
+        description: "Build a critter powered by water.",
+      },
+      {
+        icon: PackageOpenIcon,
+        name: "Cardboard Free Create",
+        description: "Your idea, your design. Build it!",
+      },
+    ],
   },
 ] as const;
 
@@ -205,8 +252,182 @@ export default function DayCampsBostonPage() {
       {/* Body */}
       <section className="bg-gradient-to-b from-orange-50 via-rose-50/60 to-indigo-50/60 py-16">
         <Container className="max-w-3xl">
-          {/* General Details & Overview */}
+          {/* November Camp Days */}
           <div className="flex items-center gap-3">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#F6B93B]/20 text-[#B7791F]">
+              <HammerIcon className="size-5" aria-hidden />
+            </span>
+            <div>
+              <h2
+                className={cn(
+                  lora.className,
+                  "text-2xl font-bold text-[#1B2559] sm:text-3xl",
+                )}
+              >
+                No School? Let&rsquo;s Build!
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Two November camp days — pick one project each day
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            {NOVEMBER_CAMPS.map((camp) => (
+              <div
+                key={camp.date}
+                className="overflow-hidden rounded-3xl border border-border bg-white"
+              >
+                <div
+                  className={cn(
+                    "flex items-end justify-between gap-3 px-5 py-4",
+                    camp.headerClass,
+                  )}
+                >
+                  <div>
+                    <p className="text-xs font-bold tracking-widest uppercase opacity-90">
+                      {camp.weekday}
+                    </p>
+                    <p className={cn(lora.className, "text-4xl font-bold")}>
+                      {camp.date}
+                    </p>
+                  </div>
+                  <p className="pb-1 text-right text-sm font-semibold">
+                    {camp.occasion}
+                  </p>
+                </div>
+
+                <div className="p-5">
+                  <p className="text-xs font-bold tracking-widest text-muted-foreground uppercase">
+                    Pick one project
+                  </p>
+                  <div className="mt-3 flex flex-col gap-2">
+                    {camp.projects.map((project, i) => (
+                      <div key={project.name}>
+                        {i > 0 ? (
+                          <p className="my-1 text-center text-[11px] font-bold tracking-widest text-muted-foreground">
+                            OR
+                          </p>
+                        ) : null}
+                        <div
+                          className={cn(
+                            "flex items-center gap-3 rounded-2xl p-3",
+                            camp.projectBg,
+                          )}
+                        >
+                          <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#3B4FD1]">
+                            <project.icon className="size-5" aria-hidden />
+                          </span>
+                          <div>
+                            <p className="font-semibold text-[#1B2559]">
+                              {project.name}
+                            </p>
+                            <p className="text-sm text-muted-foreground">
+                              {project.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0F7A5C] px-4 py-1.5 text-sm font-semibold text-white">
+              <ClockIcon className="size-4" aria-hidden />
+              8:30 AM – 3:00 PM
+            </span>
+            <span className="inline-flex items-center rounded-full border-2 border-[#3B4FD1] px-4 py-1.5 text-sm font-semibold text-[#1B2559]">
+              Grades: PreK–Grade 4
+            </span>
+            <span className="inline-flex items-center rounded-full border-2 border-[#3B4FD1] px-4 py-1.5 text-sm font-semibold text-[#1B2559]">
+              Extended time available*
+            </span>
+          </div>
+
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <div className="rounded-2xl border-2 border-dashed border-[#3B4FD1] bg-white px-5 py-4 text-center">
+                <p className="text-xs font-bold tracking-widest text-muted-foreground uppercase">
+                  Standard
+                </p>
+                <p
+                  className={cn(
+                    lora.className,
+                    "text-4xl font-bold text-[#1B2559]",
+                  )}
+                >
+                  $189
+                </p>
+                <p className="text-sm font-medium text-muted-foreground">
+                  per day
+                </p>
+              </div>
+              <p className="mt-2 text-xs text-muted-foreground">
+                * Extended time after camp for an additional cost, just ask!{" "}
+                <span className="font-semibold text-foreground">Nov 3:</span>{" "}
+                Fun Math.{" "}
+                <span className="font-semibold text-foreground">Nov 11:</span>{" "}
+                Engineering or Fun Math.
+              </p>
+            </div>
+
+            <div className="rounded-2xl bg-[#FFF1C2] p-5">
+              <p className={cn(lora.className, "text-lg font-bold text-[#1B2559]")}>
+                Ways to Save
+              </p>
+              <ul className="mt-2 flex flex-col gap-2 text-sm text-[#1B2559]">
+                <li className="flex items-start gap-2">
+                  <CheckIcon className="mt-0.5 size-4 shrink-0 text-[#209163]" aria-hidden />
+                  <span>
+                    <span className="font-semibold">Multi-day:</span> $10 off
+                    each day when you sign up for more than one day.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckIcon className="mt-0.5 size-4 shrink-0 text-[#209163]" aria-hidden />
+                  <span>
+                    <span className="font-semibold">Sibling discount</span> for
+                    families enrolling 2+ children.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <InfoIcon className="mt-0.5 size-4 shrink-0 text-[#1B2559]" aria-hidden />
+                  <span>
+                    Discounts can&rsquo;t be combined. We pick the bigger
+                    saving.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <a
+            href={CAMP_DAY_FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 flex cursor-pointer items-center justify-between gap-4 rounded-2xl bg-gradient-to-br from-[#232E68] to-[#141B42] px-6 py-5 transition-transform hover:scale-[1.01]"
+          >
+            <div>
+              <p
+                className={cn(lora.className, "text-xl font-bold text-white")}
+              >
+                Save your spot —{" "}
+                <span className="text-[#F6B93B]">days fill fast!</span>
+              </p>
+              <p className="text-sm text-white/80">
+                Register for Nov 3 or Nov 11 · 288 Walnut Street, Suite 300,
+                Newton, MA
+              </p>
+            </div>
+            <ArrowRightIcon className="size-6 shrink-0 text-white" aria-hidden />
+          </a>
+
+          {/* General Details & Overview */}
+          <div className="mt-14 flex items-center gap-3">
             <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#8B5CF6]/15 text-[#8B5CF6]">
               <SparklesIcon className="size-5" aria-hidden />
             </span>

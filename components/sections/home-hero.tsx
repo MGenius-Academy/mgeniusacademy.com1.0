@@ -15,11 +15,20 @@ import {
 import { btnOutline, btnPrimary, dotGrid } from "@/components/home/styles";
 import { siteConfig } from "@/lib/site-config";
 
-const heroImages = [
+type HeroImage = {
+  src: string;
+  alt: string;
+  href?: string;
+  // Show the whole image (letterboxed over a blurred copy) instead of cropping to 4:3.
+  contain?: boolean;
+};
+
+const heroImages: HeroImage[] = [
   {
-    src: "/images/home/banner-trial-class-2026.jpg",
-    alt: "MGA Special Trial Class — one 90-minute class for just $19",
-    href: "/steam-events/mga-special-trial-class-19",
+    src: "/images/post_halloween-parent-child-trial-class/cover.jpg",
+    alt: "Light up a haunted house — Halloween Parent & Child Trial Lesson, Grades K–4, Sat Oct 24, Newton, MA",
+    href: "/steam-events/halloween-parent-child-trial-class-light-up-a-haunted-house",
+    contain: true,
   },
   {
     src: "/images/home/banner-12.jpg",
@@ -189,12 +198,22 @@ function HeroCarousel() {
               {heroImages.map((image, index) => (
                 <CarouselItem key={image.src}>
                   <div className="relative aspect-4/3 overflow-hidden rounded-[14px] bg-slate-100">
+                    {image.contain ? (
+                      <Image
+                        src={image.src}
+                        alt=""
+                        aria-hidden
+                        fill
+                        sizes="(min-width: 1024px) 560px, 100vw"
+                        className="scale-110 object-cover blur-2xl"
+                      />
+                    ) : null}
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
                       sizes="(min-width: 1024px) 560px, 100vw"
-                      className="object-cover"
+                      className={image.contain ? "object-contain" : "object-cover"}
                       priority={index === 0}
                     />
                     {image.href ? (

@@ -87,6 +87,11 @@ export const mainNav: NavItem[] = [
         href: "/boston-stem/math-awards/noetic",
         description: "Noetic Learning Math Contest results",
       },
+      {
+        label: "AMC Competition",
+        href: "/amc-competition",
+        description: "AMC 8 at MGA — January 23, 2027",
+      },
     ],
   },
   {

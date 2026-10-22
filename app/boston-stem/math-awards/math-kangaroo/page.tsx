@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeftIcon, ArrowRightIcon, TrophyIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  BarChart3Icon,
+  CalendarIcon,
+  ClockIcon,
+  LightbulbIcon,
+  ListChecksIcon,
+  MailIcon,
+  MapPinIcon,
+  TrophyIcon,
+  UsersIcon,
+} from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
@@ -30,6 +42,40 @@ const overallStats = [
   { value: "42", label: "National Top 20 awards, 2025–2026" },
   { value: "9", label: "MA State Top 3 awards, 2025–2026" },
   { value: "9 of 16", label: "2026 Top 20 students who were also in the 2025 Top 20" },
+];
+
+const contest2027Details = [
+  {
+    icon: UsersIcon,
+    title: "Eligibility",
+    lines: ["Students in Kindergarten through grade 8"],
+  },
+  {
+    icon: ListChecksIcon,
+    title: "Format",
+    lines: ["75 minutes"],
+  },
+  {
+    icon: CalendarIcon,
+    title: "Date & Time",
+    lines: [
+      "Thursday, March 18, 2027",
+      "Session 1: 3:30 PM – 4:45 PM",
+      "Session 2: 5:00 PM – 6:15 PM",
+    ],
+  },
+  {
+    icon: MapPinIcon,
+    title: "Location",
+    lines: ["MGenius Academy", "288 Walnut Street, Suite 300", "Newton, MA 02460"],
+  },
+];
+
+const competitionLevels = [
+  { level: "Level 1", grades: "Grades 1–2 (and Kindergarteners)" },
+  { level: "Level 2", grades: "Grades 3–4" },
+  { level: "Level 3", grades: "Grades 5–6" },
+  { level: "Level 4", grades: "Grades 7–8" },
 ];
 
 export default function MathKangarooAwardsPage() {
@@ -62,6 +108,122 @@ export default function MathKangarooAwardsPage() {
               fill
               className="object-cover"
             />
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-secondary/40 py-16">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+              Grades K–8 · Register by Dec 14
+            </p>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+              Math Kangaroo 2027 at MGA
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              MGenius Academy will host the Math Kangaroo Competition in Newton, MA on
+              Thursday, March 18, 2027.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2">
+            {contest2027Details.map((item) => (
+              <div
+                key={item.title}
+                className="flex items-start gap-4 rounded-2xl border border-border bg-background p-6"
+              >
+                <item.icon className="mt-0.5 size-6 shrink-0 text-primary" aria-hidden />
+                <div>
+                  <h3 className="text-base font-semibold">{item.title}</h3>
+                  {item.lines.map((line) => (
+                    <p key={line} className="text-sm text-muted-foreground">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            <div className="flex items-start gap-4 rounded-2xl border border-border bg-background p-6 sm:col-span-2">
+              <BarChart3Icon className="mt-0.5 size-6 shrink-0 text-primary" aria-hidden />
+              <div className="w-full">
+                <h3 className="text-base font-semibold">Competition Levels</h3>
+                <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                  {competitionLevels.map((item) => (
+                    <div
+                      key={item.level}
+                      className="flex items-center justify-between gap-3 rounded-xl bg-secondary/40 px-4 py-2 text-sm"
+                    >
+                      <span className="font-medium">{item.level}</span>
+                      <span className="text-right text-muted-foreground">{item.grades}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16">
+        <Container>
+          <div className="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Registration Fees
+              </h2>
+
+              <div className="mt-6 flex flex-col gap-3">
+                <div className="flex items-center justify-between rounded-2xl border border-border bg-background px-6 py-4">
+                  <span className="font-semibold">MGA Math Students</span>
+                  <span className="text-3xl font-bold text-primary">$0</span>
+                </div>
+                <div className="flex items-center justify-between rounded-2xl border border-border bg-background px-6 py-4">
+                  <span className="font-semibold">Other Students</span>
+                  <span className="text-3xl font-bold text-primary">$20</span>
+                </div>
+                <div className="flex items-center gap-3 rounded-2xl border border-border bg-background px-6 py-4">
+                  <ClockIcon className="size-5 shrink-0 text-primary" aria-hidden />
+                  <div>
+                    <p className="font-semibold">Registration Deadline</p>
+                    <p className="text-sm text-muted-foreground">December 14, 2026</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-border bg-background p-6">
+                <h3 className="flex items-center gap-2 text-base font-semibold">
+                  <LightbulbIcon className="size-4 text-primary" aria-hidden />
+                  Pre-Contest Training — Coming Soon
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  We are planning Math Kangaroo pre-contest training at MGA. Please stay
+                  tuned for more details!
+                </p>
+              </div>
+
+              <p className="mt-6 text-sm text-muted-foreground">
+                Scan the QR code on the flyer to register.
+              </p>
+              <a
+                href="mailto:info@mgeniusacademy.com"
+                className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+              >
+                <MailIcon className="size-4" aria-hidden />
+                Questions? info@mgeniusacademy.com
+              </a>
+            </div>
+
+            <div className="overflow-hidden rounded-3xl border border-border">
+              <Image
+                src="/images/curriculum_singapore-math/math-kangaroo-2027-flyer.jpg"
+                alt="Math Kangaroo 2027 at MGenius Academy flyer with registration QR code"
+                width={1280}
+                height={1657}
+                className="h-auto w-full"
+              />
+            </div>
           </div>
         </Container>
       </section>
