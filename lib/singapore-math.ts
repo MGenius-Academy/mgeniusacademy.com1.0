@@ -61,6 +61,7 @@ export type ApLevel = {
   objectives: string;
   topics: string[];
   image: string;
+  imageAlt: string;
 };
 
 export const apLevels: ApLevel[] = [
@@ -69,19 +70,20 @@ export const apLevels: ApLevel[] = [
     label: "AP K",
     ageGroup: "PreK-K",
     objectives:
-      "Children master key early math concepts and begin using higher-order thinking. We want them to enjoy math and to start thinking independently and critically. Because problems go a step beyond counting and calculating, children learn to reason a question through on their own and apply simple strategies to everyday life, which gives them a strong, competitive start.",
+      "Children build number sense through objects, pictures, movement, and conversation. Each lesson moves from noticing and explaining to choosing a strategy and checking an answer, helping young learners become curious, independent problem solvers.",
     topics: [
-      "Numbers to 50",
-      "Addition and Subtraction",
-      "Money",
-      "Geometry",
-      "Measurement",
-      "Patterns and Sequences",
-      "Computational Thinking",
-      "Data Representation and Interpretation",
-      "Word Problems",
+      "Counting Number Sense and Place Value to 50",
+      "Joining Separating and Comparing Quantities",
+      "Shape Position and Spatial Reasoning",
+      "Length Weight and Capacity Exploration",
+      "Coins Values and Simple Purchases",
+      "Repeating Patterns and Rule Discovery",
+      "Sorting Tallying and Picture Graphs",
+      "Story Problems with Drawings and Objects",
+      "Step by Step Logic and Early Algorithms",
     ],
     image: "/images/curriculum_singapore-math/tabs/ap-k.png",
+    imageAlt: "MGA Early Math counting activity showing 4 plus 3 equals 7",
   },
   {
     id: "ap-1",
@@ -98,6 +100,7 @@ export const apLevels: ApLevel[] = [
       "Money",
     ],
     image: "/images/curriculum_singapore-math/tabs/ap-1.png",
+    imageAlt: "MGA Math Lab place value activity showing 32 plus 15 equals 47",
   },
   {
     id: "ap-2",
@@ -117,6 +120,7 @@ export const apLevels: ApLevel[] = [
       "Word Problems",
     ],
     image: "/images/curriculum_singapore-math/tabs/ap-2.png",
+    imageAlt: "MGA Math Lab time challenge showing 3 15 plus 45 minutes equals 4 00",
   },
   {
     id: "ap-3",
@@ -137,6 +141,7 @@ export const apLevels: ApLevel[] = [
       "Word Problems Involving Problem-Solving Strategies",
     ],
     image: "/images/curriculum_singapore-math/tabs/ap-3.png",
+    imageAlt: "MGA Math Lab multiplication array showing 6 rows of 4 equals 24",
   },
   {
     id: "ap-4",
@@ -156,30 +161,32 @@ export const apLevels: ApLevel[] = [
       "Word Problems Involving Problem-Solving Strategies",
     ],
     image: "/images/curriculum_singapore-math/tabs/ap-4.png",
+    imageAlt: "MGA Math Lab angle reasoning showing 137 degrees plus 43 degrees equals 180 degrees",
   },
   {
     id: "ap-5",
     label: "AP 5",
     ageGroup: "G5-6",
     objectives:
-      "Students strengthen self-reflective learning habits, such as checking their reasoning and learning from mistakes, while developing creativity, critical thinking, and an edge in math. Working with topics such as ratio, rate, percentage, and expressions and equations, they master the problem-solving strategies they will need in middle school and beyond.",
+      "Students connect arithmetic, geometry, and early algebra through multi-step investigations. They learn to represent relationships, select efficient strategies, justify results, and use estimation and checking to catch errors, preparing for middle-school math while retaining strong number sense.",
     topics: [
-      "Expressions and Equations",
-      "Word Problems Involving Whole Numbers",
-      "Fractions",
-      "Word Problems Involving Fractions",
-      "Area of Triangles",
-      "Volume",
-      "Ratio",
-      "Decimals",
-      "Word Problems Involving Decimals",
-      "Rate",
-      "Percentage",
-      "Word Problems Involving Percentage",
-      "Average",
-      "Basic Angle Properties",
+      "Whole Number Reasoning in Multi Step Contexts",
+      "Fraction Operations and Quantitative Reasoning",
+      "Decimal Operations and Estimation",
+      "Ratios as Multiplicative Comparisons",
+      "Unit Rates and Scale Reasoning",
+      "Percent as a Part of 100",
+      "Integrated Problems with Fractions Decimals and Percent",
+      "Variables Expressions and Unknowns",
+      "Equations and Equality Reasoning",
+      "Means Totals and Data Interpretation",
+      "Triangle Area through Decomposition",
+      "Volume of Rectangular Prisms",
+      "Angle Relationships and Geometric Arguments",
+      "Mathematical Modeling Strategy Choice and Verification",
     ],
     image: "/images/curriculum_singapore-math/tabs/ap-5.png",
+    imageAlt: "MGA Math Lab percent reasoning showing 37 point 5 percent of 48 equals 18",
   },
 ];
 

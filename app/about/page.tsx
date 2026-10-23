@@ -15,7 +15,7 @@ const pillars = [
   {
     icon: CompassIcon,
     title: "Mission",
-    body: "MGenius Academy (MGA) is a STEM, AI, and engineering academy based in the Boston area, dedicated to creating an open and creative learning environment for children. We provide hands-on STEM education for students in grades K–12, helping them develop independent thinking and real-world problem-solving skills — empowering them to explore, create, and innovate through engineering, mathematics, and technology. In 2024, MGA integrated the Spark Math program to further strengthen our math curriculum.",
+    body: "MGenius Academy (MGA) is a STEM, AI, and engineering academy based in the Boston area, dedicated to creating an open and creative learning environment for children. We provide hands-on STEM education for students in grades K–12, helping them develop independent thinking and real-world problem-solving skills — empowering them to explore, create, and innovate through engineering, mathematics, and technology.",
     image: "/images/about/MGA-1-1024x768.jpg",
   },
   {

@@ -120,26 +120,26 @@ export default function AdvancedMathProgramPage() {
               Our Teaching Approach
             </h2>
             <p className="mt-4 text-muted-foreground text-pretty">
-              Every lesson teaches both how to solve a problem and how to
-              think about it. Students learn seven problem-solving methods
-              and practice eight thinking skills, shown below. When they
-              meet an unfamiliar question, they can analyze it, choose an
-              effective method, and explain why it works. That is the basis
-              for strong mathematical reasoning and real confidence.
+              Every lesson develops both mathematical understanding and a
+              repeatable way to reason. Students use MGA&apos;s seven-tool
+              problem-solving toolkit and practice eight thinking habits. When
+              they meet an unfamiliar question, they learn to represent it
+              clearly, choose an efficient approach, test their result, and
+              explain why it works.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-white ring-1 ring-border">
                 <Image
-                  src="/images/curriculum_singapore-math/teaching-problem-solving.jpg"
-                  alt="7 problem-solving methods taught in MGA's math program"
+                  src="/images/curriculum_singapore-math/teaching-problem-solving.png"
+                  alt="MGA problem solving toolkit with seven original methods"
                   fill
                   className="object-contain p-2"
                 />
               </div>
               <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-white ring-1 ring-border">
                 <Image
-                  src="/images/curriculum_singapore-math/teaching-thinking-skills.jpg"
-                  alt="8 thinking skills developed in MGA's math program"
+                  src="/images/curriculum_singapore-math/teaching-thinking-skills.png"
+                  alt="MGA thinking habits diagram with eight reasoning habits"
                   fill
                   className="object-contain p-2"
                 />

@@ -27,7 +27,7 @@ export function ApTabs() {
             <div className="relative aspect-4/3 overflow-hidden rounded-3xl bg-secondary/40">
               <Image
                 src={level.image}
-                alt={`${level.label} learning app screenshot`}
+                alt={level.imageAlt}
                 fill
                 className="object-contain p-4"
               />

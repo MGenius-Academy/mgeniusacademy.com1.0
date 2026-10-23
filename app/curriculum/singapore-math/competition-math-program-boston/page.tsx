@@ -175,16 +175,16 @@ export default function CompetitionMathProgramPage() {
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-white ring-1 ring-border">
                 <Image
-                  src="/images/curriculum_singapore-math/teaching-problem-solving.jpg"
-                  alt="7 problem-solving methods taught in MGA's math program"
+                  src="/images/curriculum_singapore-math/teaching-problem-solving.png"
+                  alt="MGA problem solving toolkit with seven original methods"
                   fill
                   className="object-contain p-2"
                 />
               </div>
               <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-white ring-1 ring-border">
                 <Image
-                  src="/images/curriculum_singapore-math/teaching-thinking-skills.jpg"
-                  alt="8 thinking skills developed in MGA's math program"
+                  src="/images/curriculum_singapore-math/teaching-thinking-skills.png"
+                  alt="MGA thinking habits diagram with eight reasoning habits"
                   fill
                   className="object-contain p-2"
                 />

@@ -19,16 +19,22 @@ type HeroImage = {
   src: string;
   alt: string;
   href?: string;
-  // Show the whole image (letterboxed over a blurred copy) instead of cropping to 4:3.
-  contain?: boolean;
+  // Fill the frame and crop from the bottom, keeping the top of a tall flyer visible.
+  cropTop?: boolean;
 };
 
 const heroImages: HeroImage[] = [
   {
-    src: "/images/post_halloween-parent-child-trial-class/cover.jpg",
-    alt: "Light up a haunted house — Halloween Parent & Child Trial Lesson, Grades K–4, Sat Oct 24, Newton, MA",
-    href: "/steam-events/halloween-parent-child-trial-class-light-up-a-haunted-house",
-    contain: true,
+    src: "/images/home/nov-day-camp-flyer.png",
+    alt: "No School? Let's Build! — MGA STEM Day Camp, Nov 3 & Nov 11, PreK–Grade 4, Newton, MA",
+    href: "/mga-camp/day-camps-boston",
+    cropTop: true,
+  },
+  {
+    src: "/images/awards_AMC/amc8-2027-flyer.jpg",
+    alt: "AMC 8 at MGA — Saturday, January 23, 2027, Grades 8 and below, register by Oct 27",
+    href: "/amc-competition",
+    cropTop: true,
   },
   {
     src: "/images/home/banner-12.jpg",
@@ -198,7 +204,8 @@ function HeroCarousel() {
               {heroImages.map((image, index) => (
                 <CarouselItem key={image.src}>
                   <div className="relative aspect-4/3 overflow-hidden rounded-[14px] bg-slate-100">
-                    {image.contain ? (
+                    {/* Blurred copy fills the frame so the full image is never cropped. */}
+                    {image.cropTop ? null : (
                       <Image
                         src={image.src}
                         alt=""
@@ -207,13 +214,13 @@ function HeroCarousel() {
                         sizes="(min-width: 1024px) 560px, 100vw"
                         className="scale-110 object-cover blur-2xl"
                       />
-                    ) : null}
+                    )}
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
                       sizes="(min-width: 1024px) 560px, 100vw"
-                      className={image.contain ? "object-contain" : "object-cover"}
+                      className={image.cropTop ? "object-cover object-top" : "object-contain"}
                       priority={index === 0}
                     />
                     {image.href ? (
