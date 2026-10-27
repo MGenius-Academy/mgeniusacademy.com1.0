@@ -129,3 +129,14 @@
     @apply font-sans;
   }
 }
+
+/* Home page: every section fills the screen and scrolling snaps one section
+   at a time. Sections taller than the screen still scroll freely inside. */
+html:has([data-snap-sections]) {
+  --site-header-h: 73px; /* sticky SiteHeader: h-18 + 1px border */
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--site-header-h);
+}
+html:has([data-snap-sections]) body > footer {
+  scroll-snap-align: end;
+}

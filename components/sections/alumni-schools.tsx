@@ -88,7 +88,7 @@ function LogoRow({
 
 export function AlumniSchools() {
   return (
-    <section id="alumni" className="scroll-mt-24 py-16 lg:py-24">
+    <section className="py-16 lg:py-24">
       <style>{`@keyframes mga-marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 0.375rem))}}`}</style>
       <Container>
         <Reveal>

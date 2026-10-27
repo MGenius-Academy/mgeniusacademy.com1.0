@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowRightIcon, ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Container } from "@/components/container";
 import {
@@ -81,15 +81,31 @@ export function HomeHero() {
           transition: { duration: 0.8, delay, ease },
         };
 
+  // Parallax as the hero scrolls away: copy drifts up and fades, the carousel
+  // lags behind, and the dot grid moves slowest.
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const mediaY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const gridY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+
   return (
-    <section className="relative overflow-hidden border-b border-slate-200/80">
-      <div
+    <section ref={sectionRef} className="relative overflow-hidden border-b border-slate-200/80">
+      <motion.div
         aria-hidden="true"
+        style={reduce ? undefined : { y: gridY }}
         className={`pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block ${dotGrid} [mask-image:linear-gradient(to_left,black,transparent)]`}
       />
 
       <Container className="relative grid grid-cols-1 items-center gap-12 py-14 lg:grid-cols-12 lg:gap-10 lg:py-20">
-        <div className="min-w-0 lg:col-span-6">
+        <motion.div
+          className="min-w-0 lg:col-span-6"
+          style={reduce ? undefined : { y: copyY, opacity: copyOpacity }}
+        >
           <motion.p
             {...enter(0)}
             className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-[#1A43BF]"
@@ -142,10 +158,11 @@ export function HomeHero() {
               <ArrowRightIcon className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </motion.div>
-        </div>
+        </motion.div>
 
         <motion.div
           className="min-w-0 lg:col-span-6"
+          style={reduce ? undefined : { y: mediaY }}
           {...(reduce
             ? {}
             : {
