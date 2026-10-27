@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { CakeIcon, CheckIcon, ClockIcon, UsersIcon } from "lucide-react";
+import Image from "next/image";
+import { CheckIcon, ClockIcon, UsersIcon } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/container";
 import { CtaBanner } from "@/components/cta-banner";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { PlaceholderImage } from "@/components/placeholder-image";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -81,12 +81,17 @@ export default function BirthdayPartyPage() {
       <section className="py-16">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
-            <PlaceholderImage
-              label="MGA birthday party celebration"
-              aspect="square"
-              icon={CakeIcon}
-              className="w-full"
-            />
+            <div className="flex aspect-square w-full items-center justify-center rounded-2xl border border-border bg-linear-to-br from-amber-50 via-rose-50 to-sky-50">
+              {/* Birthday cake from Microsoft Fluent Emoji (MIT License) */}
+              <Image
+                src="/images/birthday-party/birthday-cake.svg"
+                alt="Colorful birthday cake with three candles"
+                width={32}
+                height={32}
+                unoptimized
+                className="h-auto w-3/5 drop-shadow-xl"
+              />
+            </div>
             <div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Three Ways to Celebrate
@@ -170,22 +175,15 @@ export default function BirthdayPartyPage() {
               Party Slots
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Book one of the available weekend slots below.
+              Book one of the available Saturday slots below.
             </p>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 sm:max-w-xl sm:mx-auto">
+          <div className="mx-auto mt-10 max-w-xs">
             <Card className="p-6">
               <h3 className="font-semibold">Saturday</h3>
               <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
-                <li>11:00 AM – 1:00 PM</li>
                 <li>1:30 PM – 3:30 PM</li>
-                <li>5:00 PM – 7:00 PM</li>
-              </ul>
-            </Card>
-            <Card className="p-6">
-              <h3 className="font-semibold">Sunday</h3>
-              <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
-                <li>11:00 AM – 1:00 PM</li>
+                <li>4:00 PM – 6:00 PM</li>
               </ul>
             </Card>
           </div>
